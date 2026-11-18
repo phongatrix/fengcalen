@@ -1,53 +1,37 @@
 package fengcalen.receiver
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.util.Log
-import androidx.core.app.NotificationCompat
-import fengcalen.R
-import fengcalen.ui.MainActivity
+import dagger.hilt.android.AndroidEntryPoint
+import fengcalen.data.dao.EventReminderDao
+import fengcalen.service.ReminderScheduler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class AlarmReceiver : BroadcastReceiver() {
+
+    @Inject
+    lateinit var eventReminderDao: EventReminderDao
+
     override fun onReceive(context: Context, intent: Intent) {
-        val title = intent.getStringExtra("title") ?: "Nhắc nhở ngày lễ"
-        val message = intent.getStringExtra("message") ?: "Hôm nay là ngày rằm / mùng 1 âm lịch"
+        Log.i("AlarmReceiver", "Received alarm intent action: ${intent.action}")
 
-        val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val channelId = "fengcalen_occasions"
+        // Lên lịch cho ngày tiếp theo
+        ReminderScheduler.scheduleDailyAlarm(context)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(
-                channelId,
-                "Lịch Âm & Lễ Tiết",
-                NotificationManager.IMPORTANCE_DEFAULT
-            )
-            manager.createNotificationChannel(channel)
+        // Kiểm tra và phát thông báo các sự kiện sắp tới
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                ReminderScheduler.checkAndNotifyUpcomingReminders(context, eventReminderDao)
+            } catch (e: Exception) {
+                Log.e("AlarmReceiver", "Error checking reminders: ${e.message}", e)
+            }
         }
-
-        val openIntent = Intent(context, MainActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-        }
-        val pendingIntent = PendingIntent.getActivity(
-            context,
-            0,
-            openIntent,
-            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-        )
-
-        val notification = NotificationCompat.Builder(context, channelId)
-            .setSmallIcon(R.mipmap.ic_launcher)
-            .setContentTitle(title)
-            .setContentText(message)
-            .setAutoCancel(true)
-            .setContentIntent(pendingIntent)
-            .build()
-
-        manager.notify(2027, notification)
     }
 }
 
@@ -63,6 +47,7 @@ class BootReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action == Intent.ACTION_BOOT_COMPLETED) {
             Log.i("BootReceiver", "Device rebooted, restoring alarm schedules.")
+            ReminderScheduler.scheduleDailyAlarm(context)
         }
     }
 }

@@ -1,6 +1,6 @@
 # Lịch Âm — Feng Calen (Android Application)
 
-Ứng dụng di động **Lịch Âm - Feng Calen** (`vn.fengcalen`) được xây dựng hoàn toàn sạch và độc lập từ mã nguồn Kotlin + Jetpack Compose Material 3, loại bỏ toàn bộ mã nguồn bản quyền và các dịch vụ phụ thuộc ngoài. Ứng dụng tích hợp trọn vẹn âm dương lịch vạn niên, thuật toán thiên văn tuần trăng, tín hiệu phong thủy, cùng kho tàng văn hóa dân gian Việt Nam (48 sự kiện cổ truyền, 14 bài văn khấn, 625 bài ca dao, 61 câu đối, 460 lời chúc mừng, và từ điển phương ngữ 63 tỉnh thành).
+Ứng dụng di động **Lịch Âm - Feng Calen** (`vn.fengcalen`) được xây dựng hoàn toàn sạch và độc lập từ mã nguồn Kotlin + Jetpack Compose Material 3. Ứng dụng tích hợp trọn vẹn âm dương lịch vạn niên, thuật toán thiên văn tuần trăng, tín hiệu phong thủy, và **hệ thống tạo nhắc nhở sự kiện thông minh (Sinh nhật, Ngày giỗ, Kỷ niệm...) hỗ trợ cả Lịch Âm & Lịch Dương, thông báo trước 10 ngày, 1 tuần, với nhạc báo kinh điển từ điện thoại Nokia**.
 
 ---
 
@@ -16,17 +16,32 @@
 - **Ngôn ngữ:** Kotlin 2.0.21, Jetpack Compose Material 3 (BOM 2024.09.00)
 - **Kiến trúc:** MVVM + Clean Architecture + Repository Pattern + Dependency Injection (Hilt 2.51)
 - **Cơ sở dữ liệu:** Room Database 2.6.1 + KSP
-- **Chữ ký số:** V1 + V2 + V3 (Zipalign 4-byte căn chỉnh)
+- **Chữ ký số:** V2 Signature Scheme (Zipalign 4-byte căn chỉnh)
 - **Tập tin cài đặt sẵn:** `app/apk/release/fengcalen-1.0.0.apk` (~14 MB)
 
 ---
 
-## 2. Điểm Nổi Bật Kiến Trúc & Kỹ Thuật
+## 2. Tính Năng Mới: Nhắc Nhở Sự Kiện & Nhạc Báo Nokia
 
-- **Mã nguồn sạch & độc lập:** Xây dựng mới 100% bằng Kotlin và Jetpack Compose, không sử dụng lại mã nguồn cũ đã qua dịch ngược, không chứa quảng cáo hay theo dõi.
-- **Tách biệt module & MVVM:** Thiết kế rõ ràng từ Data Layer (Room, Repositories), Domain/Service Layer đến UI Layer (Compose Screens, ViewModels).
-- **Offline First:** Toàn bộ thuật toán thiên văn, âm dương lịch, dữ liệu văn khấn, ca dao, sự kiện cổ truyền đều hoạt động hoàn toàn offline, không phụ thuộc máy chủ bên ngoài.
-- **Tương thích cao:** Hỗ trợ từ Android 7.0 (API 24) đến Android 15 (API 35+).
+### 🎂 Nhắc Nhở Sự Kiện Thông Minh (Sinh nhật, Ngày giỗ, Kỷ niệm)
+- **Tạo sự kiện trực tiếp trên Lịch Tháng:** Chạm vào bất kỳ ngày nào trên lưới lịch để xem sự kiện và bấm `+ Thêm nhắc nhở` / `Tạo nhắc nhở`.
+- **Hỗ trợ chuẩn xác Lịch Âm & Lịch Dương:**
+  - *Ngày giỗ / Lễ tiết:* Đặt theo ngày Âm lịch (ví dụ Rằm tháng 8, 15/07 ÂL), ứng dụng tự động tính toán chính xác ngày Dương lịch tương ứng mỗi năm.
+  - *Sinh nhật / Kỷ niệm:* Cho phép chọn linh hoạt theo Dương lịch hoặc Âm lịch.
+- **Tùy chọn thời gian thông báo trước:**
+  - Trước 10 ngày
+  - Trước 1 tuần (7 ngày)
+  - Trước 3 ngày
+  - Trước 1 ngày
+  - Đúng ngày diễn ra sự kiện
+- **Dấu chấm hiển thị trên Lịch Tháng:** Các ngày có sự kiện được đánh dấu trực quan bằng chấm đỏ/nổi bật ngay trên ô lịch.
+
+### 🎵 Bộ Nhạc Báo Cổ Điển Điện Thoại Nokia (Tích hợp sẵn)
+- **Nokia Tune (Kinh điển 3310):** Nhạc chuông huyền thoại thế giới Gran Vals.
+- **Nokia Báo Thức (Clock Alert):** Chuông báo thức kép đặc trưng của dòng điện thoại Nokia bàn phím.
+- **Nokia Tin Nhắn SMS:** Điệu morse Special kinh điển (`... -- ...`).
+- **Nokia Đa Âm (Polyphonic):** Giai điệu Nokia hòa âm đa bè phong cách hoài niệm.
+- Hỗ trợ **nghe thử âm thanh trực tiếp** ngay khi tạo/chỉnh sửa sự kiện và phát chuông khi thông báo xuất hiện.
 
 ---
 
@@ -39,9 +54,9 @@ fengcalen/
 │   ├── settings.gradle.kts              # Gradle multi-module settings
 │   ├── gradle.properties                # JVM & AndroidX settings
 │   ├── gradlew                          # Gradle wrapper executable
-│   ├── verify_project.py                # Script kiểm tra tự động 59/59 tiêu chuẩn
+│   ├── verify_project.py                # Script kiểm tra tự động 69/69 tiêu chuẩn
 │   ├── release/                         # Bản phát hành APK sẵn sàng cài đặt
-│   │   ├── fengcalen-1.0.0.apk          # 13.9 MB (Đã ký V1+V2+V3)
+│   │   ├── fengcalen-1.0.0.apk          # 14.3 MB (Đã ký V2 Scheme & Zipalign)
 │   │   ├── fengcalen-universal.apk      # Bản sao universal độc lập
 │   │   └── install.sh                   # Script cài đặt tự động qua ADB
 │   └── app/
@@ -49,82 +64,42 @@ fengcalen/
 │       ├── proguard-rules.pro           # Proguard obfuscation rules
 │       └── src/main/
 │           ├── AndroidManifest.xml      # Package, permissions, activities, services
-│           ├── java/fengcalen/          # Mã nguồn Kotlin (UI, Data, Service, Util, ...)
-│           ├── res/                     # Strings, Colors, Themes, Drawables
-│           ├── jniLibs/arm64-v8a/       # Native .so libraries
-│           └── assets/                  # Dữ liệu ca dao, câu đối, văn khấn, sự kiện
-├── prompt/                              # Tài liệu đặc tả kỹ thuật & prompt kiến tạo
+│           ├── java/fengcalen/
+│           │   ├── ui/
+│           │   │   ├── MainActivity.kt  # Bottom Nav 4 mục: Hôm nay, Lịch, Nhắc Nhở, Cài Đặt
+│           │   │   └── screen/
+│           │   │       ├── HomeScreen.kt       # Trang chủ + thẻ sự kiện sắp diễn ra
+│           │   │       ├── CalendarScreen.kt   # Lịch tháng + chấm sự kiện + tạo nhắc nhở
+│           │   │       ├── RemindersScreen.kt  # Màn hình quản lý toàn bộ nhắc nhở
+│           │   │       ├── ReminderDialog.kt   # Dialog chọn loại lịch, ngày, giờ, nhạc Nokia
+│           │   │       ├── MoonPhaseScreen.kt  # Trăng sao
+│           │   │       ├── FengShuiScreen.kt   # Phong thủy
+│           │   │       └── SettingsScreen.kt   # Cài đặt
+│           │   ├── data/                # Entity, Dao (EventReminderDao), Database
+│           │   ├── service/             # ReminderScheduler (Lên lịch báo trước 10 ngày, 1 tuần)
+│           │   └── util/                # LunarCalendar, NokiaSoundHelper
+│           ├── res/raw/                 # nokia_tune.wav, nokia_alarm.wav, nokia_sms.wav, nokia_polyphonic.wav
+│           └── jniLibs/arm64-v8a/       # Native .so libraries
+├── prompt/                              # Tài liệu đặc tả kỹ thuật
 └── rea/                                 # Báo cáo phân tích kỹ thuật ngược (Reverse Engineering)
 ```
 
 ---
 
-## 4. Các Chức Năng Chính (8 Màn Hình)
+## 4. Hướng Dẫn Cài Đặt & Sử Dụng
 
-1. **Trang Chủ (HomeScreen):**
-   - Đồng hồ thời gian thực và so sánh ngày dương - ngày âm nổi bật.
-   - Hiển thị đầy đủ Thiên Can Địa Chi (Năm, Tháng, Ngày) và Con Giáp.
-   - Thẻ danh ngôn/ca dao truyền thống ngẫu nhiên mỗi ngày.
-   - Giờ hoàng đạo và các lối tắt điều hướng nhanh.
-
-2. **Lịch Tháng Vạn Niên (CalendarScreen):**
-   - Lưới lịch tương tác đầy đủ tháng, chuyển tháng mượt mà.
-   - Hiển thị song song ngày dương lịch và âm lịch trên từng ô ngày.
-   - Đánh dấu nổi bật ngày mùng 1 (sóc) và ngày rằm (vọng).
-   - Xem chi tiết từng ngày được chọn: Can Chi, Giờ hoàng đạo, Lễ hội sắp tới.
-
-3. **Giai Đoạn Mặt Trăng (MoonPhaseScreen):**
-   - Tính toán chu kỳ tuần trăng thiên văn (Synodic Month 29.53 ngày).
-   - Minh họa tỷ lệ sáng (% illumination), tuổi trăng (ngày), tên giai đoạn (Sóc, Thượng Huyền, Vọng, Hạ Huyền).
-   - Chòm sao hoàng đạo chiếu và đánh giá năng lượng vũ trụ.
-
-4. **Tín Hiệu Phong Thủy (FengShuiScreen):**
-   - Ngũ Hành bản mệnh, Âm Dương khí vận.
-   - Hướng xuất hành đại cát (Hỷ Thần, Tài Thần).
-   - Màu sắc và con số may mắn trong ngày.
-   - Danh sách Việc Nên Làm và Việc Cần Kiêng Kỵ chi tiết.
-
-5. **Kho Tàng Văn Học Dân Gian (CaDaoScreen):**
-   - 625 bài Ca dao dân tộc.
-   - 61 câu Đối truyền thống đối ngẫu.
-   - 460 Lời chào chúc văn hóa.
-   - Thanh tìm kiếm tức thì theo từ khóa, lọc theo chủ đề và nút sao chép nhanh vào clipboard.
-
-6. **48 Sự Kiện Cổ Truyền & Văn Khấn (OccasionsScreen):**
-   - Đầy đủ 48 lễ tết truyền thống (Tết Nguyên Đán, Rằm Tháng Giêng, Đoan Ngọ, Trung Thu, Giỗ Tổ, Vu Lan...).
-   - Hiển thị phong tục tập quán, các việc chuẩn bị (todos) và ảnh minh họa.
-   - Hỗ trợ mở đọc trực tiếp 14 bài Văn Khấn cổ truyền trong modal reader.
-
-7. **Ngôn Ngữ & Phương Ngữ (LanguageScreen):**
-   - Chuyển đổi linh hoạt giao diện Tiếng Việt và Tiếng Anh.
-   - Kết nối với từ điển phương ngữ 3 miền (Bắc, Trung, Nam) và 63 tỉnh thành.
-
-8. **Cài Đặt (SettingsScreen):**
-   - Bật/tắt chế độ tối (Dark Mode), sáng (Light Mode) hoặc tự động theo hệ thống.
-   - Cài đặt nhắc nhở thông báo trước ngày rằm và mùng 1 âm lịch.
-   - Thông tin phiên bản và nhà phát triển.
-
----
-
-## 5. Hướng Dẫn Mở Dự Án & Biên Dịch
-
-### Cách 1: Mở bằng Android Studio
-1. Mở Android Studio -> Chọn `Open`.
-2. Trỏ đến thư mục: `app/apk`.
-3. Chờ Gradle đồng bộ (Sync) xong và bấm `Run` (Shift + F10) trên thiết bị hoặc máy ảo Android.
-
-### Cách 2: Cài đặt trực tiếp file APK có sẵn
+### Cài đặt trực tiếp file APK có sẵn:
 Tập tin APK hoàn chỉnh đã được đóng gói sẵn tại:
 ```bash
 app/apk/release/fengcalen-1.0.0.apk
 ```
 Cài đặt vào điện thoại hoặc máy ảo thông qua adb:
 ```bash
-adb install app/apk/release/fengcalen-1.0.0.apk
+adb install -r app/apk/release/fengcalen-1.0.0.apk
 ```
 
-### Cách 3: Chạy script kiểm tra
+### Chạy script kiểm tra:
 ```bash
 python3 app/apk/verify_project.py
 ```
-Toàn bộ 59/59 tiêu chuẩn kiểm tra đều đạt PASS.
+Toàn bộ **69/69** tiêu chuẩn kiểm tra đều đạt **PASS (100%)**.

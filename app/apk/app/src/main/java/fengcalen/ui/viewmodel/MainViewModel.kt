@@ -4,6 +4,8 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import fengcalen.data.dao.EventReminderDao
+import fengcalen.data.entity.EventReminderEntity
 import fengcalen.data.model.ContentItem
 import fengcalen.data.model.FengShui
 import fengcalen.data.model.LunarDate
@@ -11,10 +13,14 @@ import fengcalen.data.model.MoonPhase
 import fengcalen.data.model.Occasion
 import fengcalen.data.repository.ContentRepository
 import fengcalen.data.repository.LunarDateRepository
+import fengcalen.util.LunarCalendar
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -23,7 +29,8 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val lunarRepository: LunarDateRepository,
-    private val contentRepository: ContentRepository
+    private val contentRepository: ContentRepository,
+    private val reminderDao: EventReminderDao
 ) : ViewModel() {
 
     private val dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
@@ -43,6 +50,32 @@ class MainViewModel @Inject constructor(
 
     private val _fengShui = MutableStateFlow<FengShui?>(null)
     val fengShui: StateFlow<FengShui?> = _fengShui.asStateFlow()
+
+    // Danh sách nhắc nhở sự kiện (Sinh nhật, Giỗ, Kỷ niệm...)
+    val allReminders: StateFlow<List<EventReminderEntity>> = reminderDao.getAllReminders()
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+
+    // Danh sách sự kiện của ngày đang được chọn trên lịch
+    val selectedDateReminders: StateFlow<List<EventReminderEntity>> = combine(
+        allReminders,
+        selectedDate
+    ) { reminders, date ->
+        reminders.filter { LunarCalendar.isDateMatchingReminder(date, it) }
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+
+    // Danh sách sự kiện sắp tới trong vòng 30 ngày (đặc biệt là 10 ngày, 1 tuần)
+    val upcomingReminders: StateFlow<List<Pair<EventReminderEntity, Long>>> = allReminders
+        .combine(_selectedDate) { reminders, _ ->
+            val today = LocalDate.now()
+            reminders
+                .filter { it.isEnabled }
+                .map { reminder ->
+                    val daysUntil = LunarCalendar.getDaysUntilNextOccurrence(reminder, today)
+                    Pair(reminder, daysUntil)
+                }
+                .filter { it.second in 0..30 }
+                .sortedBy { it.second }
+        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
     private val _caDaoList = MutableStateFlow<List<ContentItem>>(emptyList())
     val caDaoList: StateFlow<List<ContentItem>> = _caDaoList.asStateFlow()
@@ -67,7 +100,6 @@ class MainViewModel @Inject constructor(
 
     init {
         loadDateData(LocalDate.now())
-        loadContent()
     }
 
     fun selectDate(date: LocalDate) {
@@ -88,41 +120,36 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun loadContent() {
+    fun saveReminder(reminder: EventReminderEntity) {
         viewModelScope.launch(exceptionHandler) {
             try {
-                contentRepository.getContent("ca-dao").collect { items ->
-                    _caDaoList.value = items
+                if (reminder.id == 0L) {
+                    reminderDao.insertReminder(reminder)
+                } else {
+                    reminderDao.updateReminder(reminder)
                 }
             } catch (t: Throwable) {
-                Log.e("MainViewModel", "Error loading ca-dao: ${t.message}", t)
+                Log.e("MainViewModel", "Error saving reminder: ${t.message}", t)
             }
         }
+    }
+
+    fun deleteReminder(id: Long) {
         viewModelScope.launch(exceptionHandler) {
             try {
-                contentRepository.getContent("cau-doi").collect { items ->
-                    _cauDoiList.value = items
-                }
+                reminderDao.deleteReminderById(id)
             } catch (t: Throwable) {
-                Log.e("MainViewModel", "Error loading cau-doi: ${t.message}", t)
+                Log.e("MainViewModel", "Error deleting reminder: ${t.message}", t)
             }
         }
+    }
+
+    fun toggleReminder(reminder: EventReminderEntity) {
         viewModelScope.launch(exceptionHandler) {
             try {
-                contentRepository.getContent("greeting").collect { items ->
-                    _greetingsList.value = items
-                }
+                reminderDao.updateReminder(reminder.copy(isEnabled = !reminder.isEnabled))
             } catch (t: Throwable) {
-                Log.e("MainViewModel", "Error loading greetings: ${t.message}", t)
-            }
-        }
-        viewModelScope.launch(exceptionHandler) {
-            try {
-                contentRepository.loadAllOccasions().collect { list ->
-                    _occasions.value = list
-                }
-            } catch (t: Throwable) {
-                Log.e("MainViewModel", "Error loading occasions: ${t.message}", t)
+                Log.e("MainViewModel", "Error toggling reminder: ${t.message}", t)
             }
         }
     }

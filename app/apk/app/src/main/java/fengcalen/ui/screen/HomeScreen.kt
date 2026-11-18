@@ -34,8 +34,7 @@ import fengcalen.widget.LunarWidgetProvider
 fun HomeScreen(navController: NavController, viewModel: MainViewModel) {
     val lunarDate by viewModel.todayLunar.collectAsState()
     val moonPhase by viewModel.moonPhase.collectAsState()
-    val caDaoList by viewModel.caDaoList.collectAsState()
-    val randomCaDao = remember(caDaoList) { caDaoList.shuffled().firstOrNull() }
+    val upcomingReminders by viewModel.upcomingReminders.collectAsState()
 
     Scaffold(
         topBar = {
@@ -197,39 +196,71 @@ fun HomeScreen(navController: NavController, viewModel: MainViewModel) {
                 }
             }
 
-            // Daily Folk Verse (Ca Dao)
-            randomCaDao?.let { caDao ->
+            // Upcoming Reminder Alert Card (if any upcoming in next 10 days)
+            if (upcomingReminders.isNotEmpty()) {
+                val nextEvent = upcomingReminders.first()
+                val reminder = nextEvent.first
+                val daysUntil = nextEvent.second
+                val icon = when (reminder.eventType) {
+                    "BIRTHDAY" -> "🎂"
+                    "MEMORIAL" -> "🕯️"
+                    "ANNIVERSARY" -> "💍"
+                    else -> "📌"
+                }
+
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { navController.navigate(Screen.CaDao.route) },
+                        .clickable { navController.navigate(Screen.Reminders.route) },
                     shape = RoundedCornerShape(16.dp),
                     colors = CardDefaults.cardColors(
                         containerColor = MaterialTheme.colorScheme.surfaceVariant
-                    )
+                    ),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
                 ) {
-                    Column(modifier = Modifier.padding(16.dp)) {
-                        Text(
-                            text = "VĂN HÓA DÂN GIAN",
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.primary,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Spacer(modifier = Modifier.height(6.dp))
-                        Text(
-                            text = "\"${caDao.content}\"",
-                            style = MaterialTheme.typography.bodyLarge,
-                            fontWeight = FontWeight.Medium,
-                            fontStyle = androidx.compose.ui.text.font.FontStyle.Italic
-                        )
-                        if (caDao.title.isNotEmpty()) {
-                            Spacer(modifier = Modifier.height(4.dp))
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Text(text = icon, fontSize = 28.sp)
+                            Spacer(modifier = Modifier.width(12.dp))
+                            Column {
+                                Text(
+                                    text = "Sự kiện sắp tới: ${reminder.title}",
+                                    style = MaterialTheme.typography.titleMedium,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                Text(
+                                    text = "Ngày ${reminder.day}/${reminder.month} (${if (reminder.isLunar) "Âm lịch" else "Dương lịch"})",
+                                    fontSize = 12.sp,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                        }
+
+                        Surface(
+                            color = if (daysUntil <= 3) MaterialTheme.colorScheme.errorContainer else MaterialTheme.colorScheme.primaryContainer,
+                            shape = RoundedCornerShape(8.dp)
+                        ) {
                             Text(
-                                text = "— ${caDao.title}",
-                                style = MaterialTheme.typography.labelMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                textAlign = TextAlign.End,
-                                modifier = Modifier.fillMaxWidth()
+                                text = when (daysUntil) {
+                                    0L -> "Hôm nay!"
+                                    1L -> "Ngày mai"
+                                    7L -> "1 tuần nữa"
+                                    10L -> "10 ngày nữa"
+                                    else -> "Còn $daysUntil ngày"
+                                },
+                                color = if (daysUntil <= 3) MaterialTheme.colorScheme.onErrorContainer else MaterialTheme.colorScheme.onPrimaryContainer,
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp)
                             )
                         }
                     }
@@ -254,10 +285,10 @@ fun HomeScreen(navController: NavController, viewModel: MainViewModel) {
                     onClick = { navController.navigate(Screen.Calendar.route) }
                 )
                 QuickActionCard(
-                    title = "Trăng Sao",
-                    icon = Icons.Default.NightsStay,
+                    title = "Nhắc Nhở",
+                    icon = Icons.Default.NotificationsActive,
                     modifier = Modifier.weight(1f),
-                    onClick = { navController.navigate(Screen.Moon.route) }
+                    onClick = { navController.navigate(Screen.Reminders.route) }
                 )
             }
 
@@ -266,16 +297,16 @@ fun HomeScreen(navController: NavController, viewModel: MainViewModel) {
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 QuickActionCard(
+                    title = "Trăng Sao",
+                    icon = Icons.Default.NightsStay,
+                    modifier = Modifier.weight(1f),
+                    onClick = { navController.navigate(Screen.Moon.route) }
+                )
+                QuickActionCard(
                     title = "Phong Thủy",
                     icon = Icons.Default.Explore,
                     modifier = Modifier.weight(1f),
                     onClick = { navController.navigate(Screen.FengShui.route) }
-                )
-                QuickActionCard(
-                    title = "Sự Kiện & Lễ",
-                    icon = Icons.Default.Celebration,
-                    modifier = Modifier.weight(1f),
-                    onClick = { navController.navigate(Screen.Occasions.route) }
                 )
             }
         }
@@ -308,7 +339,7 @@ fun QuickActionCard(
 ) {
     Card(
         modifier = modifier
-            .height(96.dp)
+            .clip(RoundedCornerShape(16.dp))
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
@@ -316,17 +347,22 @@ fun QuickActionCard(
     ) {
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(12.dp),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
-            Icon(icon, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
-            Spacer(modifier = Modifier.height(6.dp))
+            Icon(
+                imageVector = icon,
+                contentDescription = title,
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(32.dp)
+            )
+            Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = title,
-                style = MaterialTheme.typography.labelLarge,
-                fontWeight = FontWeight.Medium
+                style = MaterialTheme.typography.bodyMedium,
+                fontWeight = FontWeight.SemiBold
             )
         }
     }

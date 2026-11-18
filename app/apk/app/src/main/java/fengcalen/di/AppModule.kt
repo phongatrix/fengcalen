@@ -7,6 +7,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import fengcalen.data.dao.EventReminderDao
 import fengcalen.data.dao.LunarDateDao
 import fengcalen.data.database.FengCalendarDatabase
 import javax.inject.Singleton
@@ -35,5 +36,13 @@ object AppModule {
         database: FengCalendarDatabase
     ): LunarDateDao {
         return database.lunarDateDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideEventReminderDao(
+        database: FengCalendarDatabase
+    ): EventReminderDao {
+        return database.eventReminderDao()
     }
 }

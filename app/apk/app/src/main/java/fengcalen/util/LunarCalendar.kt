@@ -1,7 +1,10 @@
 package fengcalen.util
 
+import fengcalen.data.entity.EventReminderEntity
 import fengcalen.data.model.FengShui
 import fengcalen.data.model.LunarDate
+import java.time.LocalDate
+import java.time.temporal.ChronoUnit
 import kotlin.math.*
 
 object LunarCalendar {
@@ -112,6 +115,69 @@ object LunarCalendar {
         }
 
         return intArrayOf(lunarDay, lunarMonth, lunarYear, lunarLeap)
+    }
+
+    /**
+     * Tìm ngày Dương lịch tương ứng với ngày Âm lịch trong năm Âm lịch đó.
+     */
+    fun findSolarDateForLunar(lunarDay: Int, lunarMonth: Int, lunarYear: Int): LocalDate? {
+        val start = LocalDate.of(lunarYear, 1, 1)
+        val end = LocalDate.of(lunarYear + 1, 3, 1)
+        var cur = start
+        while (!cur.isAfter(end)) {
+            val l = convertSolar2Lunar(cur.dayOfMonth, cur.monthValue, cur.year, 7.0)
+            if (l[0] == lunarDay && l[1] == lunarMonth && l[2] == lunarYear) {
+                return cur
+            }
+            cur = cur.plusDays(1)
+        }
+        return null
+    }
+
+    /**
+     * Kiểm tra một ngày Dương lịch có trùng với ngày diễn ra của sự kiện (Âm hoặc Dương) hay không.
+     */
+    fun isDateMatchingReminder(date: LocalDate, reminder: EventReminderEntity): Boolean {
+        return if (reminder.isLunar) {
+            val l = convertSolar2Lunar(date.dayOfMonth, date.monthValue, date.year, 7.0)
+            l[0] == reminder.day && l[1] == reminder.month
+        } else {
+            date.dayOfMonth == reminder.day && date.monthValue == reminder.month
+        }
+    }
+
+    /**
+     * Tính toán ngày Dương lịch tiếp theo mà sự kiện sẽ diễn ra.
+     */
+    fun getNextOccurrence(reminder: EventReminderEntity, fromDate: LocalDate = LocalDate.now()): LocalDate {
+        return if (!reminder.isLunar) {
+            val maxDayThisYear = java.time.Month.of(reminder.month).length(fromDate.isLeapYear)
+            val thisYearDay = reminder.day.coerceAtMost(maxDayThisYear)
+            val thisYearDate = LocalDate.of(fromDate.year, reminder.month, thisYearDay)
+            if (thisYearDate.isBefore(fromDate)) {
+                val nextYear = fromDate.year + 1
+                val maxDayNextYear = java.time.Month.of(reminder.month).length(java.time.Year.isLeap(nextYear.toLong()))
+                LocalDate.of(nextYear, reminder.month, reminder.day.coerceAtMost(maxDayNextYear))
+            } else {
+                thisYearDate
+            }
+        } else {
+            val todayLunar = convertSolar2Lunar(fromDate.dayOfMonth, fromDate.monthValue, fromDate.year, 7.0)
+            val curLunarYear = todayLunar[2]
+            var solar = findSolarDateForLunar(reminder.day, reminder.month, curLunarYear)
+            if (solar == null || solar.isBefore(fromDate)) {
+                solar = findSolarDateForLunar(reminder.day, reminder.month, curLunarYear + 1)
+            }
+            solar ?: fromDate
+        }
+    }
+
+    /**
+     * Số ngày còn lại tính từ hôm nay đến ngày diễn ra tiếp theo của sự kiện.
+     */
+    fun getDaysUntilNextOccurrence(reminder: EventReminderEntity, fromDate: LocalDate = LocalDate.now()): Long {
+        val nextOccurrence = getNextOccurrence(reminder, fromDate)
+        return ChronoUnit.DAYS.between(fromDate, nextOccurrence)
     }
 
     fun solarToLunar(solarDate: String): LunarDate {

@@ -12,9 +12,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.ChevronLeft
-import androidx.compose.material.icons.filled.ChevronRight
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -26,8 +24,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import fengcalen.data.entity.EventReminderEntity
 import fengcalen.ui.viewmodel.MainViewModel
 import fengcalen.util.LunarCalendar
+import fengcalen.util.NokiaSoundHelper
 import java.time.LocalDate
 import java.time.YearMonth
 
@@ -37,6 +37,11 @@ fun CalendarScreen(navController: NavController, viewModel: MainViewModel) {
     var currentYearMonth by remember { mutableStateOf(YearMonth.now()) }
     val selectedDate by viewModel.selectedDate.collectAsState()
     val todayLunar by viewModel.todayLunar.collectAsState()
+    val allReminders by viewModel.allReminders.collectAsState()
+    val selectedDateReminders by viewModel.selectedDateReminders.collectAsState()
+
+    var showCreateDialog by remember { mutableStateOf(false) }
+    var reminderToEdit by remember { mutableStateOf<EventReminderEntity?>(null) }
 
     val daysInMonth = remember(currentYearMonth) {
         val firstDay = currentYearMonth.atDay(1)
@@ -52,18 +57,43 @@ fun CalendarScreen(navController: NavController, viewModel: MainViewModel) {
         list
     }
 
+    // Selected lunar date calculation
+    val currentSelectedLunar = remember(selectedDate) {
+        LunarCalendar.convertSolar2Lunar(selectedDate.dayOfMonth, selectedDate.monthValue, selectedDate.year)
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Lịch Tháng Vạn Niên") },
+                title = { Text("Lịch Tháng Vạn Niên", fontWeight = FontWeight.Bold) },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Trở về")
                     }
                 },
+                actions = {
+                    IconButton(onClick = {
+                        reminderToEdit = null
+                        showCreateDialog = true
+                    }) {
+                        Icon(Icons.Default.AddAlert, contentDescription = "Thêm nhắc nhở")
+                    }
+                },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.surface
                 )
+            )
+        },
+        floatingActionButton = {
+            ExtendedFloatingActionButton(
+                onClick = {
+                    reminderToEdit = null
+                    showCreateDialog = true
+                },
+                icon = { Icon(Icons.Default.Add, contentDescription = null) },
+                text = { Text("Thêm nhắc nhở") },
+                containerColor = MaterialTheme.colorScheme.primary,
+                contentColor = MaterialTheme.colorScheme.onPrimary
             )
         }
     ) { padding ->
@@ -110,7 +140,7 @@ fun CalendarScreen(navController: NavController, viewModel: MainViewModel) {
 
             // Calendar Grid
             val totalWeeks = (daysInMonth.size + 6) / 7
-            val gridHeight = (totalWeeks * 50).dp + 16.dp
+            val gridHeight = (totalWeeks * 54).dp + 16.dp
 
             Card(
                 modifier = Modifier.fillMaxWidth(),
@@ -132,7 +162,7 @@ fun CalendarScreen(navController: NavController, viewModel: MainViewModel) {
                                 modifier = Modifier
                                     .padding(2.dp)
                                     .fillMaxWidth()
-                                    .height(46.dp)
+                                    .height(50.dp)
                             )
                         } else {
                             val isSelected = date == selectedDate
@@ -144,11 +174,17 @@ fun CalendarScreen(navController: NavController, viewModel: MainViewModel) {
                             val lunarMonth = lunarData[1]
                             val isSpecialLunar = lunarDay == 1 || lunarDay == 15
 
+                            // Check if this date has any user-created event reminders
+                            val dayEvents = remember(allReminders, date) {
+                                allReminders.filter { LunarCalendar.isDateMatchingReminder(date, it) }
+                            }
+                            val hasEvent = dayEvents.isNotEmpty()
+
                             Box(
                                 modifier = Modifier
                                     .padding(2.dp)
                                     .fillMaxWidth()
-                                    .height(46.dp)
+                                    .height(50.dp)
                                     .clip(RoundedCornerShape(8.dp))
                                     .background(
                                         when {
@@ -185,6 +221,19 @@ fun CalendarScreen(navController: NavController, viewModel: MainViewModel) {
                                     },
                                     modifier = Modifier.align(Alignment.BottomEnd)
                                 )
+
+                                // Dấu chấm đánh dấu sự kiện nhắc nhở (Sinh nhật, Giỗ, v.v...)
+                                if (hasEvent) {
+                                    Box(
+                                        modifier = Modifier
+                                            .align(Alignment.BottomStart)
+                                            .size(7.dp)
+                                            .clip(CircleShape)
+                                            .background(
+                                                if (isSelected) Color.White else Color(0xFFE11D48)
+                                            )
+                                    )
+                                }
                             }
                         }
                     }
@@ -201,11 +250,29 @@ fun CalendarScreen(navController: NavController, viewModel: MainViewModel) {
                     )
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
-                        Text(
-                            text = "Chi tiết ngày đã chọn: ${lunar.solarDate}",
-                            style = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.Bold
-                        )
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = "Chi tiết ngày: ${lunar.solarDate}",
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.Bold
+                            )
+                            FilledTonalButton(
+                                onClick = {
+                                    reminderToEdit = null
+                                    showCreateDialog = true
+                                },
+                                contentPadding = PaddingValues(horizontal = 12.dp, vertical = 6.dp)
+                            ) {
+                                Icon(Icons.Default.Add, contentDescription = null, modifier = Modifier.size(16.dp))
+                                Spacer(modifier = Modifier.width(4.dp))
+                                Text("Tạo nhắc nhở", fontSize = 12.sp)
+                            }
+                        }
+
                         Spacer(modifier = Modifier.height(8.dp))
                         Text(
                             text = "Âm lịch: Ngày ${lunar.day} tháng ${lunar.month} năm ${lunar.year}",
@@ -231,6 +298,183 @@ fun CalendarScreen(navController: NavController, viewModel: MainViewModel) {
                     }
                 }
             }
+
+            // Reminders for Selected Date
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+            ) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                Icons.Default.NotificationsActive,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.size(20.dp)
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(
+                                text = "Sự kiện & Nhắc nhở ngày này",
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.Bold
+                            )
+                        }
+                        Text(
+                            text = "${selectedDateReminders.size} sự kiện",
+                            style = MaterialTheme.typography.labelMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(12.dp))
+
+                    if (selectedDateReminders.isEmpty()) {
+                        Text(
+                            text = "Chưa có sự kiện nhắc nhở nào cho ngày này. Chạm '+ Tạo nhắc nhở' để thêm ngày sinh nhật, ngày giỗ...",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f)
+                        )
+                    } else {
+                        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                            selectedDateReminders.forEach { reminder ->
+                                ReminderItemCard(
+                                    reminder = reminder,
+                                    onEdit = {
+                                        reminderToEdit = reminder
+                                        showCreateDialog = true
+                                    },
+                                    onDelete = {
+                                        viewModel.deleteReminder(reminder.id)
+                                    },
+                                    onToggle = {
+                                        viewModel.toggleReminder(reminder)
+                                    }
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(60.dp)) // Space for FAB
+        }
+    }
+
+    // Dialog Create / Edit Reminder
+    if (showCreateDialog) {
+        CreateEditReminderDialog(
+            initialDate = selectedDate,
+            initialIsLunar = true,
+            initialLunarDay = currentSelectedLunar[0],
+            initialLunarMonth = currentSelectedLunar[1],
+            reminderToEdit = reminderToEdit,
+            onDismiss = { showCreateDialog = false },
+            onSave = { reminder ->
+                viewModel.saveReminder(reminder)
+                showCreateDialog = false
+            }
+        )
+    }
+}
+
+@Composable
+fun ReminderItemCard(
+    reminder: EventReminderEntity,
+    onEdit: () -> Unit,
+    onDelete: () -> Unit,
+    onToggle: () -> Unit
+) {
+    val icon = when (reminder.eventType) {
+        "BIRTHDAY" -> "🎂"
+        "MEMORIAL" -> "🕯️"
+        "ANNIVERSARY" -> "💍"
+        else -> "📌"
+    }
+
+    val typeLabel = when (reminder.eventType) {
+        "BIRTHDAY" -> "Sinh nhật"
+        "MEMORIAL" -> "Ngày giỗ"
+        "ANNIVERSARY" -> "Kỷ niệm"
+        else -> "Sự kiện"
+    }
+
+    val toneName = NokiaSoundHelper.TONES.find { it.id == reminder.ringtone }?.name ?: "Mặc định"
+
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+        )
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.weight(1f)
+            ) {
+                Text(text = icon, fontSize = 24.sp)
+                Spacer(modifier = Modifier.width(10.dp))
+                Column {
+                    Text(
+                        text = reminder.title,
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(
+                        text = "$typeLabel • ${if (reminder.isLunar) "Âm lịch" else "Dương lịch"} (${reminder.day}/${reminder.month})",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Text(
+                        text = "🎵 $toneName • Báo trước: ${formatRemindDays(reminder.remindDaysBefore)}",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.primary,
+                        fontSize = 11.sp
+                    )
+                }
+            }
+
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                IconButton(onClick = onEdit, modifier = Modifier.size(32.dp)) {
+                    Icon(Icons.Default.Edit, contentDescription = "Sửa", modifier = Modifier.size(18.dp))
+                }
+                IconButton(onClick = onDelete, modifier = Modifier.size(32.dp)) {
+                    Icon(
+                        Icons.Default.Delete,
+                        contentDescription = "Xóa",
+                        tint = MaterialTheme.colorScheme.error,
+                        modifier = Modifier.size(18.dp)
+                    )
+                }
+            }
+        }
+    }
+}
+
+fun formatRemindDays(daysStr: String): String {
+    val days = daysStr.split(",").mapNotNull { it.trim().toIntOrNull() }
+    if (days.isEmpty()) return "Đúng ngày"
+    return days.sorted().joinToString(", ") { d ->
+        when (d) {
+            0 -> "Đúng ngày"
+            1 -> "1 ngày"
+            3 -> "3 ngày"
+            7 -> "1 tuần"
+            10 -> "10 ngày"
+            else -> "$d ngày"
         }
     }
 }

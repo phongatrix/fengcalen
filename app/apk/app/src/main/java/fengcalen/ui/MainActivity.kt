@@ -9,9 +9,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CalendarMonth
-import androidx.compose.material.icons.filled.Celebration
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.MenuBook
+import androidx.compose.material.icons.filled.NotificationsActive
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -42,6 +41,8 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val targetRoute = intent?.getStringExtra("route")
+
         setContent {
             val isDarkPref by viewModel.isDarkTheme.collectAsState()
             val useDark = isDarkPref ?: isSystemInDarkTheme()
@@ -51,40 +52,64 @@ class MainActivity : ComponentActivity() {
                 val navBackStackEntry by navController.currentBackStackEntryAsState()
                 val currentRoute = navBackStackEntry?.destination?.route
 
+                LaunchedEffect(targetRoute) {
+                    if (targetRoute == "reminders") {
+                        navController.navigate(Screen.Reminders.route)
+                    }
+                }
+
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     bottomBar = {
                         val bottomNavRoutes = listOf(
                             Screen.Home.route,
                             Screen.Calendar.route,
-                            Screen.CaDao.route,
-                            Screen.Occasions.route
+                            Screen.Reminders.route,
+                            Screen.Settings.route
                         )
                         if (currentRoute in bottomNavRoutes) {
                             NavigationBar {
                                 NavigationBarItem(
                                     selected = currentRoute == Screen.Home.route,
-                                    onClick = { navController.navigate(Screen.Home.route) },
+                                    onClick = {
+                                        if (currentRoute != Screen.Home.route) {
+                                            navController.navigate(Screen.Home.route) {
+                                                popUpTo(Screen.Home.route) { inclusive = true }
+                                            }
+                                        }
+                                    },
                                     icon = { Icon(Icons.Default.Home, contentDescription = "Trang chủ") },
                                     label = { Text("Hôm nay") }
                                 )
                                 NavigationBarItem(
                                     selected = currentRoute == Screen.Calendar.route,
-                                    onClick = { navController.navigate(Screen.Calendar.route) },
+                                    onClick = {
+                                        if (currentRoute != Screen.Calendar.route) {
+                                            navController.navigate(Screen.Calendar.route)
+                                        }
+                                    },
                                     icon = { Icon(Icons.Default.CalendarMonth, contentDescription = "Lịch") },
                                     label = { Text("Lịch") }
                                 )
                                 NavigationBarItem(
-                                    selected = currentRoute == Screen.CaDao.route,
-                                    onClick = { navController.navigate(Screen.CaDao.route) },
-                                    icon = { Icon(Icons.Default.MenuBook, contentDescription = "Ca Dao") },
-                                    label = { Text("Văn Học") }
+                                    selected = currentRoute == Screen.Reminders.route,
+                                    onClick = {
+                                        if (currentRoute != Screen.Reminders.route) {
+                                            navController.navigate(Screen.Reminders.route)
+                                        }
+                                    },
+                                    icon = { Icon(Icons.Default.NotificationsActive, contentDescription = "Nhắc nhở") },
+                                    label = { Text("Nhắc Nhở") }
                                 )
                                 NavigationBarItem(
-                                    selected = currentRoute == Screen.Occasions.route,
-                                    onClick = { navController.navigate(Screen.Occasions.route) },
-                                    icon = { Icon(Icons.Default.Celebration, contentDescription = "Sự Kiện") },
-                                    label = { Text("Sự Kiện") }
+                                    selected = currentRoute == Screen.Settings.route,
+                                    onClick = {
+                                        if (currentRoute != Screen.Settings.route) {
+                                            navController.navigate(Screen.Settings.route)
+                                        }
+                                    },
+                                    icon = { Icon(Icons.Default.Settings, contentDescription = "Cài đặt") },
+                                    label = { Text("Cài Đặt") }
                                 )
                             }
                         }
@@ -101,17 +126,14 @@ class MainActivity : ComponentActivity() {
                         composable(Screen.Calendar.route) {
                             CalendarScreen(navController = navController, viewModel = viewModel)
                         }
+                        composable(Screen.Reminders.route) {
+                            RemindersScreen(navController = navController, viewModel = viewModel)
+                        }
                         composable(Screen.Moon.route) {
                             MoonPhaseScreen(navController = navController, viewModel = viewModel)
                         }
                         composable(Screen.FengShui.route) {
                             FengShuiScreen(navController = navController, viewModel = viewModel)
-                        }
-                        composable(Screen.CaDao.route) {
-                            CaDaoScreen(navController = navController, viewModel = viewModel)
-                        }
-                        composable(Screen.Occasions.route) {
-                            OccasionsScreen(navController = navController, viewModel = viewModel)
                         }
                         composable(Screen.Language.route) {
                             LanguageScreen(navController = navController, viewModel = viewModel)
