@@ -398,6 +398,12 @@ fun ReminderItemCard(
         else -> "📌"
     }
 
+    val repeatLabel = when (reminder.repeatType) {
+        "YEARLY" -> "🔄 Hàng năm"
+        "MONTHLY" -> "🔁 Hàng tháng"
+        else -> "⏹️ Một lần"
+    }
+
     val typeLabel = when (reminder.eventType) {
         "BIRTHDAY" -> "Sinh nhật"
         "MEMORIAL" -> "Ngày giỗ"
@@ -434,12 +440,12 @@ fun ReminderItemCard(
                         fontWeight = FontWeight.Bold
                     )
                     Text(
-                        text = "$typeLabel • ${if (reminder.isLunar) "Âm lịch" else "Dương lịch"} (${reminder.day}/${reminder.month})",
+                        text = "$typeLabel • $repeatLabel • ${if (reminder.isLunar) "Âm lịch" else "Dương lịch"} (${reminder.day}/${reminder.month})",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     Text(
-                        text = "🎵 $toneName • Báo trước: ${formatRemindDays(reminder.remindDaysBefore)}",
+                        text = "⏰ ${reminder.remindTime} • 🎵 $toneName • Báo trước: ${formatRemindDays(reminder.remindDaysBefore)}",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.primary,
                         fontSize = 11.sp

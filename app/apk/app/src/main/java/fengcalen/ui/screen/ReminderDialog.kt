@@ -1,5 +1,6 @@
 package fengcalen.ui.screen
 
+import android.app.TimePickerDialog
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -55,6 +56,7 @@ fun CreateEditReminderDialog(
         )
     }
 
+    // Lặp lại: YEARLY (hàng năm), MONTHLY (hàng tháng), ONCE (chỉ 1 lần)
     var repeatType by remember { mutableStateOf(reminderToEdit?.repeatType ?: "YEARLY") }
 
     // Thông báo trước: "0"=đúng ngày, "1"=1 ngày, "3"=3 ngày, "7"=1 tuần, "10"=10 ngày
@@ -64,7 +66,15 @@ fun CreateEditReminderDialog(
         mutableStateOf(initialSet)
     }
 
-    var remindTime by remember { mutableStateOf(reminderToEdit?.remindTime ?: "08:00") }
+    // Giờ và phút nhận thông báo theo ý muốn
+    val initialTimeParts = (reminderToEdit?.remindTime ?: "08:00").split(":")
+    var selectedHour by remember { mutableIntStateOf(initialTimeParts.getOrNull(0)?.toIntOrNull() ?: 8) }
+    var selectedMinute by remember { mutableIntStateOf(initialTimeParts.getOrNull(1)?.toIntOrNull() ?: 0) }
+
+    val formattedTime = remember(selectedHour, selectedMinute) {
+        String.format("%02d:%02d", selectedHour, selectedMinute)
+    }
+
     var selectedRingtone by remember { mutableStateOf(reminderToEdit?.ringtone ?: "nokia_tune") }
     var note by remember { mutableStateOf(reminderToEdit?.note ?: "") }
 
@@ -85,9 +95,9 @@ fun CreateEditReminderDialog(
     ) {
         Card(
             modifier = Modifier
-                .fillMaxWidth(0.94f)
-                .fillMaxHeight(0.92f)
-                .padding(vertical = 12.dp),
+                .fillMaxWidth(0.95f)
+                .fillMaxHeight(0.94f)
+                .padding(vertical = 10.dp),
             shape = RoundedCornerShape(24.dp),
             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
             elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
@@ -117,7 +127,7 @@ fun CreateEditReminderDialog(
                     }
                 }
 
-                Divider(modifier = Modifier.padding(vertical = 8.dp))
+                HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
                 Column(
                     modifier = Modifier
@@ -125,12 +135,12 @@ fun CreateEditReminderDialog(
                         .verticalScroll(rememberScrollState()),
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    // Title input
+                    // 1. Title input
                     OutlinedTextField(
                         value = title,
                         onValueChange = { title = it },
                         label = { Text("Tên sự kiện / Đối tượng") },
-                        placeholder = { Text("Ví dụ: Sinh nhật mẹ, Ngày giỗ cụ...") },
+                        placeholder = { Text("Ví dụ: Sinh nhật mẹ, Ngày giỗ Cụ Cố...") },
                         singleLine = true,
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(12.dp),
@@ -139,7 +149,7 @@ fun CreateEditReminderDialog(
                         }
                     )
 
-                    // Event Type Chips
+                    // 2. Event Type Chips
                     Text(
                         text = "Loại sự kiện:",
                         style = MaterialTheme.typography.labelLarge,
@@ -155,7 +165,7 @@ fun CreateEditReminderDialog(
                             Triple("ANNIVERSARY", "💍 Kỷ niệm", Color(0xFFD97706)),
                             Triple("OTHER", "📌 Khác", Color(0xFF059669))
                         )
-                        types.forEach { (typeId, label, color) ->
+                        types.forEach { (typeId, label, _) ->
                             val isSelected = eventType == typeId
                             FilterChip(
                                 selected = isSelected,
@@ -168,7 +178,7 @@ fun CreateEditReminderDialog(
                         }
                     }
 
-                    // Calendar System Toggle (Lịch Âm vs Lịch Dương)
+                    // 3. Calendar System Toggle (Lịch Âm vs Lịch Dương)
                     Card(
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(16.dp),
@@ -205,7 +215,7 @@ fun CreateEditReminderDialog(
                                     )
                                     Spacer(modifier = Modifier.width(6.dp))
                                     Text(
-                                        text = "🌙 Âm Lịch (Ngày giỗ/Lễ)",
+                                        text = "🌙 Âm Lịch (Giỗ/Lễ)",
                                         fontSize = 12.5.sp,
                                         fontWeight = FontWeight.Bold,
                                         color = if (isLunar) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurface
@@ -240,7 +250,7 @@ fun CreateEditReminderDialog(
                         }
                     }
 
-                    // Date Selectors (Day and Month)
+                    // 4. Date Selectors (Day and Month)
                     Text(
                         text = "Ngày diễn ra (${if (isLunar) "Âm lịch" else "Dương lịch"}):",
                         style = MaterialTheme.typography.labelLarge,
@@ -320,7 +330,69 @@ fun CreateEditReminderDialog(
                         }
                     }
 
-                    // Notification Timing (User explicitly requested: 10 days, 1 week, ...)
+                    // 5. Chu kỳ lặp lại (MỚI THEO YÊU CẦU: Lặp lại hàng năm rõ ràng)
+                    Text(
+                        text = "Chu kỳ lặp lại:",
+                        style = MaterialTheme.typography.labelLarge,
+                        fontWeight = FontWeight.Bold
+                    )
+
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        val repeatOptions = listOf(
+                            Triple("YEARLY", "🔄 Lặp lại hàng năm", "Tự động nhắc lại vào ngày này mỗi năm (Khuyên dùng cho Sinh nhật, Giỗ)"),
+                            Triple("MONTHLY", "🔁 Lặp lại hàng tháng", "Tự động nhắc lại vào ngày này mỗi tháng"),
+                            Triple("ONCE", "⏹️ Chỉ một lần", "Chỉ thông báo một lần trong năm nay, không lặp lại")
+                        )
+
+                        repeatOptions.forEach { (typeId, label, desc) ->
+                            val isSelected = repeatType == typeId
+                            Card(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(12.dp))
+                                    .clickable { repeatType = typeId },
+                                shape = RoundedCornerShape(12.dp),
+                                colors = CardDefaults.cardColors(
+                                    containerColor = if (isSelected)
+                                        MaterialTheme.colorScheme.primaryContainer
+                                    else
+                                        MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+                                ),
+                                border = if (isSelected) androidx.compose.foundation.BorderStroke(1.5.dp, MaterialTheme.colorScheme.primary) else null
+                            ) {
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(horizontal = 12.dp, vertical = 10.dp),
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    RadioButton(
+                                        selected = isSelected,
+                                        onClick = { repeatType = typeId }
+                                    )
+                                    Spacer(modifier = Modifier.width(8.dp))
+                                    Column {
+                                        Text(
+                                            text = label,
+                                            fontWeight = FontWeight.Bold,
+                                            fontSize = 14.sp,
+                                            color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
+                                        )
+                                        Text(
+                                            text = desc,
+                                            fontSize = 11.5.sp,
+                                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                                        )
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // 6. Notification Timing (Thông báo trước)
                     Text(
                         text = "Thời gian thông báo trước:",
                         style = MaterialTheme.typography.labelLarge,
@@ -359,27 +431,156 @@ fun CreateEditReminderDialog(
                         }
                     }
 
-                    // Remind Time Selector
-                    Text(
-                        text = "Giờ nhận thông báo:",
-                        style = MaterialTheme.typography.labelLarge,
-                        fontWeight = FontWeight.Bold
-                    )
+                    // 7. Giờ nhận thông báo (NÂNG CẤP MẠNH MẼ: Chọn giờ theo ý muốn)
                     Row(
                         modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
-                        val timeOptions = listOf("07:00", "08:00", "09:00", "12:00", "18:00")
+                        Text(
+                            text = "Giờ nhận thông báo:",
+                            style = MaterialTheme.typography.labelLarge,
+                            fontWeight = FontWeight.Bold
+                        )
+                        // Nút mở TimePickerDialog chuẩn của hệ thống
+                        FilledTonalButton(
+                            onClick = {
+                                TimePickerDialog(
+                                    context,
+                                    { _, h, m ->
+                                        selectedHour = h
+                                        selectedMinute = m
+                                    },
+                                    selectedHour,
+                                    selectedMinute,
+                                    true // 24h format
+                                ).show()
+                            },
+                            contentPadding = PaddingValues(horizontal = 10.dp, vertical = 4.dp)
+                        ) {
+                            Icon(Icons.Default.Schedule, contentDescription = null, modifier = Modifier.size(16.dp))
+                            Spacer(modifier = Modifier.width(4.dp))
+                            Text("Mở đồng hồ", fontSize = 12.sp)
+                        }
+                    }
+
+                    // Khung chỉnh giờ và phút trực tiếp
+                    Card(
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(14.dp),
+                        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.6f))
+                    ) {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(12.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            // Hiển thị giờ lớn
+                            Text(
+                                text = formattedTime,
+                                fontSize = 32.sp,
+                                fontWeight = FontWeight.ExtraBold,
+                                color = MaterialTheme.colorScheme.primary
+                            )
+                            Spacer(modifier = Modifier.height(10.dp))
+
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceEvenly,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                // Bộ tăng giảm Giờ
+                                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                    Text("Giờ (0 - 23)", fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                    Spacer(modifier = Modifier.height(4.dp))
+                                    Row(verticalAlignment = Alignment.CenterVertically) {
+                                        FilledIconButton(
+                                            onClick = {
+                                                selectedHour = if (selectedHour > 0) selectedHour - 1 else 23
+                                            },
+                                            modifier = Modifier.size(36.dp)
+                                        ) {
+                                            Icon(Icons.Default.Remove, contentDescription = "Giảm giờ")
+                                        }
+                                        Text(
+                                            text = String.format("%02d", selectedHour),
+                                            fontWeight = FontWeight.Bold,
+                                            fontSize = 18.sp,
+                                            modifier = Modifier.padding(horizontal = 12.dp)
+                                        )
+                                        FilledIconButton(
+                                            onClick = {
+                                                selectedHour = if (selectedHour < 23) selectedHour + 1 else 0
+                                            },
+                                            modifier = Modifier.size(36.dp)
+                                        ) {
+                                            Icon(Icons.Default.Add, contentDescription = "Tăng giờ")
+                                        }
+                                    }
+                                }
+
+                                VerticalDivider(modifier = Modifier.height(44.dp))
+
+                                // Bộ tăng giảm Phút
+                                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                    Text("Phút (0 - 59)", fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                    Spacer(modifier = Modifier.height(4.dp))
+                                    Row(verticalAlignment = Alignment.CenterVertically) {
+                                        FilledIconButton(
+                                            onClick = {
+                                                selectedMinute = if (selectedMinute >= 5) selectedMinute - 5 else (60 - (5 - selectedMinute))
+                                            },
+                                            modifier = Modifier.size(36.dp)
+                                        ) {
+                                            Icon(Icons.Default.Remove, contentDescription = "Giảm phút")
+                                        }
+                                        Text(
+                                            text = String.format("%02d", selectedMinute),
+                                            fontWeight = FontWeight.Bold,
+                                            fontSize = 18.sp,
+                                            modifier = Modifier.padding(horizontal = 12.dp)
+                                        )
+                                        FilledIconButton(
+                                            onClick = {
+                                                selectedMinute = (selectedMinute + 5) % 60
+                                            },
+                                            modifier = Modifier.size(36.dp)
+                                        ) {
+                                            Icon(Icons.Default.Add, contentDescription = "Tăng phút")
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // Các mốc chọn nhanh giờ
+                    Text("Các mốc gợi ý nhanh:", fontSize = 11.5.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    FlowRow(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(6.dp)
+                    ) {
+                        val timeOptions = listOf("06:00", "07:00", "08:00", "09:00", "11:30", "18:00", "20:00")
                         timeOptions.forEach { t ->
+                            val parts = t.split(":")
+                            val h = parts[0].toInt()
+                            val m = parts[1].toInt()
+                            val isSelected = selectedHour == h && selectedMinute == m
+
                             FilterChip(
-                                selected = remindTime == t,
-                                onClick = { remindTime = t },
+                                selected = isSelected,
+                                onClick = {
+                                    selectedHour = h
+                                    selectedMinute = m
+                                },
                                 label = { Text(t, fontSize = 12.sp) }
                             )
                         }
                     }
 
-                    // Nokia Ringtones Selector (User explicitly requested!)
+                    // 8. Đề xuất nhạc báo Nokia
                     Text(
                         text = "Đề xuất nhạc báo Nokia:",
                         style = MaterialTheme.typography.labelLarge,
@@ -466,7 +667,7 @@ fun CreateEditReminderDialog(
                         }
                     }
 
-                    // Optional Notes
+                    // 9. Optional Notes
                     OutlinedTextField(
                         value = note,
                         onValueChange = { note = it },
@@ -480,7 +681,7 @@ fun CreateEditReminderDialog(
 
                 Spacer(modifier = Modifier.height(12.dp))
 
-                // Action buttons
+                // 10. Action buttons
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(12.dp)
@@ -509,7 +710,7 @@ fun CreateEditReminderDialog(
                                 month = selectedMonth,
                                 repeatType = repeatType,
                                 remindDaysBefore = selectedDaysBefore.sorted().joinToString(","),
-                                remindTime = remindTime,
+                                remindTime = formattedTime,
                                 ringtone = selectedRingtone,
                                 note = note.trim(),
                                 isEnabled = true
