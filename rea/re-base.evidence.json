@@ -1,0 +1,263 @@
+{
+  "coverage": {
+    "functions": 0,
+    "instructions": 0,
+    "opaque_bytes": 18743296,
+    "strings": 50034,
+    "truncated": false
+  },
+  "items": [
+    {
+      "address": 465730,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_3eac97a2666e697e",
+      "kind": "indicator",
+      "subject": "\\\\(3I"
+    },
+    {
+      "address": 999995,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_f7073a46773d509b",
+      "kind": "indicator",
+      "subject": "m,D:\\B_"
+    },
+    {
+      "address": 2607361,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_bce2c1a02227ba01",
+      "kind": "indicator",
+      "subject": "\\\\ZA0\""
+    },
+    {
+      "address": 2998538,
+      "confidence": "high",
+      "detail": "Email address",
+      "id": "ev_64b9ca980bad6206",
+      "kind": "indicator",
+      "subject": "p@Kc.Cv"
+    },
+    {
+      "address": 3435325,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_d44c4014caefbb9d",
+      "kind": "indicator",
+      "subject": "Y[&\\:\\#e:\\!f:"
+    },
+    {
+      "address": 3435592,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_e8d240575133a230",
+      "kind": "indicator",
+      "subject": "[,\\:[%]:\\&e:\\#f:\\!g:"
+    },
+    {
+      "address": 3435712,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_80da284d5261f035",
+      "kind": "indicator",
+      "subject": "[,\\:[.]:[-^:[!_:[+`:\\'e:\\&f:\\#g:"
+    },
+    {
+      "address": 3435800,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_78fe4e8229dacf49",
+      "kind": "indicator",
+      "subject": "['\\:[.]:[-^:[,_:[)`:[!a:\\%e:\\&f:\\#g:"
+    },
+    {
+      "address": 3436594,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_f655aafc0bd05f24",
+      "kind": "indicator",
+      "subject": "[%\\:[.]:[,^:[%_:[%`:[%a:[+b:[*c:[$d:\\#e:"
+    },
+    {
+      "address": 3436638,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_c1046a5498b9dc3d",
+      "kind": "indicator",
+      "subject": "\\&f:\\/g:"
+    },
+    {
+      "address": 5392880,
+      "confidence": "high",
+      "detail": "Email address",
+      "id": "ev_b4c90326e51f5c88",
+      "kind": "indicator",
+      "subject": "T@h.TAe"
+    },
+    {
+      "address": 5628850,
+      "confidence": "high",
+      "detail": "Email address",
+      "id": "ev_1b3206cb16c1914a",
+      "kind": "indicator",
+      "subject": "q@3.Tg"
+    },
+    {
+      "address": 7906515,
+      "confidence": "high",
+      "detail": "URL",
+      "id": "ev_b73e795be2c3c9f6",
+      "kind": "indicator",
+      "subject": "https://developer.android.com/reference/com/google/android/play/core/review/model/ReviewErrorCode.html#"
+    },
+    {
+      "address": 7909380,
+      "confidence": "high",
+      "detail": "URL",
+      "id": "ev_6661acbd99a43446",
+      "kind": "indicator",
+      "subject": "https://developers.google.com/tink/faq/registration_errors"
+    },
+    {
+      "address": 7928167,
+      "confidence": "high",
+      "detail": "Email address",
+      "id": "ev_7518f10a77863170",
+      "kind": "indicator",
+      "subject": "contacts@group.v.calendar.google.com"
+    },
+    {
+      "address": 7935090,
+      "confidence": "high",
+      "detail": "URL",
+      "id": "ev_9774b93029d54595",
+      "kind": "indicator",
+      "subject": "https://goo.gle/compose-feedback"
+    },
+    {
+      "address": 7966195,
+      "confidence": "high",
+      "detail": "Unix path",
+      "id": "ev_94e87eae4987cda8",
+      "kind": "indicator",
+      "subject": "/proc/"
+    },
+    {
+      "address": 7969040,
+      "confidence": "high",
+      "detail": "Email address",
+      "id": "ev_b227318858dda376",
+      "kind": "indicator",
+      "subject": "android@android.com"
+    },
+    {
+      "address": 7983217,
+      "confidence": "high",
+      "detail": "Email address",
+      "id": "ev_0e01d7d802a090ae",
+      "kind": "indicator",
+      "subject": "1@com.google.firebase.encoders.proto.Protobuf"
+    },
+    {
+      "address": 7983268,
+      "confidence": "high",
+      "detail": "Email address",
+      "id": "ev_d73acb7922ab5a5f",
+      "kind": "indicator",
+      "subject": "F@kotlinx.serialization.json.JsonClassDiscriminator"
+    },
+    {
+      "address": 7995987,
+      "confidence": "high",
+      "detail": "URL",
+      "id": "ev_6f680368a3f0ffe9",
+      "kind": "indicator",
+      "subject": "https://developer.apple.com/weatherkit/data-source-attribution/)"
+    },
+    {
+      "address": 8024770,
+      "confidence": "high",
+      "detail": "URL",
+      "id": "ev_9ff55ce42f285068",
+      "kind": "indicator",
+      "subject": "https://issuetracker.google.com/issues/241760537"
+    },
+    {
+      "address": 8106400,
+      "confidence": "high",
+      "detail": "URL",
+      "id": "ev_1f568752f92c2c67",
+      "kind": "indicator",
+      "subject": "https://youtrack.jetbrains.com/issue/KT-55980"
+    },
+    {
+      "address": null,
+      "confidence": "medium",
+      "detail": "data-manipulation/encoding/base64",
+      "id": "ev_4935e6eab2cb15e4",
+      "kind": "rule",
+      "subject": "base64 alphabet"
+    },
+    {
+      "address": null,
+      "confidence": "medium",
+      "detail": "executable/pe",
+      "id": "ev_a71dbace42b54823",
+      "kind": "rule",
+      "subject": "MZ header"
+    },
+    {
+      "address": null,
+      "confidence": "medium",
+      "detail": "lib/openssl",
+      "id": "ev_7cb661ee845b90e4",
+      "kind": "rule",
+      "subject": "OpenSSL library"
+    },
+    {
+      "address": null,
+      "confidence": "medium",
+      "detail": "lib/zlib",
+      "id": "ev_8dba300f7b864d54",
+      "kind": "rule",
+      "subject": "zlib library"
+    },
+    {
+      "address": 5480030,
+      "confidence": "high",
+      "detail": "block-cipher",
+      "id": "ev_44ab09a78908c559",
+      "kind": "crypto",
+      "subject": "TEA/XTEA delta"
+    },
+    {
+      "address": 3834572,
+      "confidence": "high",
+      "detail": "stream-cipher",
+      "id": "ev_f7769f9d21dfd5f0",
+      "kind": "crypto",
+      "subject": "ChaCha sigma"
+    },
+    {
+      "address": 7984998,
+      "confidence": "high",
+      "detail": "encoding",
+      "id": "ev_b4fce9171ac8e846",
+      "kind": "crypto",
+      "subject": "base64 alphabet"
+    }
+  ],
+  "schema_version": 1,
+  "target": {
+    "format": "ZIP container",
+    "name": "base.apk",
+    "sha256": "64c0e6aebc55d1d7e9ad03b9f26af78595f1e5ee8ee7416b191f47ce1b951a7b",
+    "size": 26938702
+  },
+  "tool_version": "7.1.0",
+  "unknowns": [
+    "18743296 bytes are high-entropy (encrypted or compressed) and were not decrypted.",
+    "No executable header was parsed; imports and mitigations are unavailable."
+  ]
+}

@@ -1,0 +1,524 @@
+{
+  "format": 1,
+  "effective": "2025-07-01",
+  "legalBasis": "Nghị quyết số 202/2025/QH15 ngày 12/6/2025 của Quốc hội về việc sắp xếp đơn vị hành chính cấp tỉnh",
+  "sources": [
+    {
+      "title": "Báo Chính phủ — Nghị quyết của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh (toàn văn NQ 202/2025/QH15)",
+      "url": "https://baochinhphu.vn/nghi-quyet-cua-quoc-hoi-ve-sap-xep-don-vi-hanh-chinh-cap-tinh-102250612191145158.htm"
+    },
+    {
+      "title": "Cổng TTĐT Chính phủ (Xây dựng chính sách, pháp luật) — Toàn văn Nghị quyết số 30/2026/QH16 thành lập thành phố Đồng Nai",
+      "url": "https://xaydungchinhsach.chinhphu.vn/nghi-quyet-so-30-2026-qh16-thanh-lap-thanh-pho-dong-nai-119260430102336551.htm"
+    },
+    {
+      "title": "Cổng TTĐT Chính phủ (Xây dựng chính sách, pháp luật) — Toàn văn Nghị quyết số 36/2026/QH16 thành lập thành phố Quảng Ninh từ 1/9/2026",
+      "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-36-2026-qh16-thanh-lap-thanh-pho-quang-ninh-tu-1-9-2026-119260903082603583.htm"
+    },
+    {
+      "title": "Cổng TTĐT Chính phủ (Xây dựng chính sách, pháp luật) — Toàn văn Nghị quyết số 39/2026/QH16 thành lập thành phố Bắc Ninh từ 20/9/2026",
+      "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-39-2026-qh16-thanh-lap-thanh-pho-bac-ninh-tu-20-9-2026-11926090308214813.htm"
+    },
+    {
+      "title": "Công báo Chính phủ — Nghị quyết 202/2025/QH15",
+      "url": "https://congbao.chinhphu.vn/noi-dung-van-ban-so-202-2025-qh15-45050"
+    },
+    {
+      "title": "Thư viện Pháp luật — Nghị quyết 202/2025/QH15 sắp xếp đơn vị hành chính cấp tỉnh",
+      "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx"
+    },
+    {
+      "title": "Báo Chính phủ — Danh sách dự kiến tên gọi và trung tâm chính trị - hành chính của 34 đơn vị hành chính cấp tỉnh (kèm Nghị quyết 60-NQ/TW ngày 12/4/2025)",
+      "url": "https://baochinhphu.vn/danh-sach-du-kien-ten-goi-cac-tinh-thanh-pho-va-trung-tam-chinh-tri-hanh-chinh-cua-34-don-vi-hanh-chinh-cap-tinh-102250414091740777.htm"
+    },
+    {
+      "title": "Wikipedia — Provinces of Vietnam (administrative centre wards after 1/7/2025)",
+      "url": "https://en.wikipedia.org/wiki/Provinces_of_Vietnam"
+    },
+    {
+      "title": "OpenStreetMap Nominatim — ward/city coordinates of the administrative centres",
+      "url": "https://nominatim.openstreetmap.org/"
+    },
+    {
+      "title": "Báo Đấu thầu — Quốc hội thông qua Nghị quyết thành lập thành phố Đồng Nai, hiệu lực từ 30/4/2026 (secondary: news report)",
+      "url": "https://baodauthau.vn/quoc-hoi-thong-qua-nghi-quyet-thanh-lap-thanh-pho-dong-nai-truc-thuoc-trung-uong-hieu-luc-tu-3042026-post197848.html"
+    },
+    {
+      "title": "VOV — Quảng Ninh chính thức trở thành thành phố trực thuộc Trung ương (secondary: news report)",
+      "url": "https://vov.vn/chinh-tri/quang-ninh-chinh-thuc-tro-thanh-thanh-pho-truc-thuoc-trung-uong-post1329133.vov"
+    },
+    {
+      "title": "Báo Quốc tế — Lễ công bố Nghị quyết số 39/2026/QH16 về việc thành lập thành phố Bắc Ninh (secondary: news report)",
+      "url": "https://baoquocte.vn/sap-dien-ra-le-cong-bo-nghi-quyet-so-39-2026-qh16-cua-quoc-hoi-ve-viec-thanh-lap-thanh-pho-bac-ninh-443041.html"
+    },
+    {
+      "title": "VietnamPlus — 9 thành phố trực thuộc Trung ương từ 20/9/2026 (secondary: news report)",
+      "url": "https://www.vietnamplus.vn/9-thanh-pho-truc-thuoc-trung-uong-tu-2092026-post1137232.vnp"
+    }
+  ],
+  "notes": [
+    "Coordinates are the approximate location of the provincial administrative centre (the ward/city where the provincial People's Committee sits after 1/7/2025, per the trung tâm chính trị - hành chính list attached to Nghị quyết 60-NQ/TW and the ward names on Wikipedia \"Provinces of Vietnam\"; coordinates from OpenStreetMap Nominatim / Wikipedia), rounded to 4 decimals; for weather only.",
+    "Seat names are the familiar pre-2025 city names (Quy Nhơn, Đồng Hới, Tân An, …). City- and district-level units were abolished on 1/7/2025, so the centre now lies in a ward (e.g. phường Quy Nhơn, phường Đồng Hới, phường Long An); weather apps should treat the seat as a place label, not an administrative unit.",
+    "Hải Phòng: most city departments moved to the new political-administrative centre north of the Cấm river (phường Thủy Nguyên); the point used is central Hải Phòng, about 2 km away, which makes no difference for weather.",
+    "Region assignment: bac = Northwest, Northeast and Red River Delta (15 units); trung = Thanh Hóa through Lâm Đồng, i.e. North Central, South Central Coast and Central Highlands (11 units); nam = Southeast and Mekong Delta (8 units). Borderline cases follow the merged unit's administrative centre and its pre-2025 region: Lâm Đồng (+ Đắk Nông, Bình Thuận; centre Đà Lạt, Central Highlands) = trung; Gia Lai (+ Bình Định; centre Quy Nhơn) = trung; Đắk Lắk (+ Phú Yên; centre Buôn Ma Thuột) = trung; Quảng Ngãi (+ Kon Tum) = trung; Khánh Hòa (+ Ninh Thuận) = trung; Đồng Nai (+ Bình Phước, both Southeast) = nam; Tây Ninh (+ Long An; centre Tân An) = nam.",
+    "Weather caveat: one point per unit. Some merged units span very different climates from their centre — Lâm Đồng (Đà Lạt highland vs. coastal former Bình Thuận/Phan Thiết), Gia Lai (coastal Quy Nhơn vs. highland Pleiku), Đắk Lắk (Buôn Ma Thuột vs. coastal Tuy Hòa), Quảng Ngãi (coast vs. Kon Tum), Lào Cai (Yên Bái vs. Sa Pa).",
+    "formerly lists all pre-2025 provincial units merged into the new unit (including the one whose name was kept); [] means not reorganised. 11 unchanged + 52 merged = 63 former units. Names, seats and formerly use the official modern tone placement of the Nghị quyết texts (Khánh Hòa, Thanh Hóa, Hòa Bình, Biên Hòa); the old style (Khánh Hoà, Thanh Hoá) is in aka where it is the unit's own name. Search should fold diacritics and tone placement.",
+    "kind reflects the 1/7/2025 structure (6 thành phố + 28 tỉnh). Later changes are recorded in laterChanges: Đồng Nai became a centrally-run city on 30/4/2026, Quảng Ninh on 1/9/2026 and Bắc Ninh on 20/9/2026 (9 thành phố + 25 tỉnh from 20/9/2026). Names and boundaries did not change. Each laterChanges entry links the official full text in source.",
+    "sources: the official full texts first (Báo Chính phủ for Nghị quyết 202/2025/QH15; Cổng TTĐT Chính phủ — Xây dựng chính sách, pháp luật for Nghị quyết 30, 36 and 39/2026/QH16), then the reference lists and coordinate sources; the news reports at the end are secondary."
+  ],
+  "provinces": [
+    {
+      "id": "an-giang",
+      "name": "An Giang",
+      "kind": "tinh",
+      "region": "nam",
+      "lat": 10.0125,
+      "lon": 105.0809,
+      "seat": "Rạch Giá",
+      "formerly": [
+        "An Giang",
+        "Kiên Giang"
+      ]
+    },
+    {
+      "id": "bac-ninh",
+      "name": "Bắc Ninh",
+      "kind": "tinh",
+      "region": "bac",
+      "lat": 21.2731,
+      "lon": 106.1946,
+      "seat": "Bắc Giang",
+      "formerly": [
+        "Bắc Ninh",
+        "Bắc Giang"
+      ],
+      "laterChanges": [
+        {
+          "date": "2026-09-20",
+          "kind": "thanh-pho",
+          "legalBasis": "Nghị quyết số 39/2026/QH16 ngày 24/8/2026 của Quốc hội về việc thành lập thành phố Bắc Ninh",
+          "source": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-39-2026-qh16-thanh-lap-thanh-pho-bac-ninh-tu-20-9-2026-11926090308214813.htm"
+        }
+      ]
+    },
+    {
+      "id": "ca-mau",
+      "name": "Cà Mau",
+      "kind": "tinh",
+      "region": "nam",
+      "lat": 9.1762,
+      "lon": 105.1508,
+      "seat": "Cà Mau",
+      "formerly": [
+        "Cà Mau",
+        "Bạc Liêu"
+      ]
+    },
+    {
+      "id": "can-tho",
+      "name": "Cần Thơ",
+      "kind": "thanh-pho",
+      "region": "nam",
+      "lat": 10.0335,
+      "lon": 105.7804,
+      "seat": "Cần Thơ",
+      "formerly": [
+        "Cần Thơ",
+        "Sóc Trăng",
+        "Hậu Giang"
+      ]
+    },
+    {
+      "id": "cao-bang",
+      "name": "Cao Bằng",
+      "kind": "tinh",
+      "region": "bac",
+      "lat": 22.6766,
+      "lon": 106.2242,
+      "seat": "Cao Bằng",
+      "formerly": []
+    },
+    {
+      "id": "da-nang",
+      "name": "Đà Nẵng",
+      "kind": "thanh-pho",
+      "region": "trung",
+      "lat": 16.059,
+      "lon": 108.2195,
+      "seat": "Đà Nẵng",
+      "formerly": [
+        "Đà Nẵng",
+        "Quảng Nam"
+      ]
+    },
+    {
+      "id": "dak-lak",
+      "name": "Đắk Lắk",
+      "kind": "tinh",
+      "region": "trung",
+      "lat": 12.6843,
+      "lon": 108.0508,
+      "seat": "Buôn Ma Thuột",
+      "formerly": [
+        "Đắk Lắk",
+        "Phú Yên"
+      ]
+    },
+    {
+      "id": "dien-bien",
+      "name": "Điện Biên",
+      "kind": "tinh",
+      "region": "bac",
+      "lat": 21.3856,
+      "lon": 103.0169,
+      "seat": "Điện Biên Phủ",
+      "formerly": []
+    },
+    {
+      "id": "dong-nai",
+      "name": "Đồng Nai",
+      "kind": "tinh",
+      "region": "nam",
+      "lat": 10.9508,
+      "lon": 106.8221,
+      "seat": "Biên Hòa",
+      "formerly": [
+        "Đồng Nai",
+        "Bình Phước"
+      ],
+      "laterChanges": [
+        {
+          "date": "2026-04-30",
+          "kind": "thanh-pho",
+          "legalBasis": "Nghị quyết số 30/2026/QH16 ngày 24/4/2026 của Quốc hội về việc thành lập thành phố Đồng Nai",
+          "source": "https://xaydungchinhsach.chinhphu.vn/nghi-quyet-so-30-2026-qh16-thanh-lap-thanh-pho-dong-nai-119260430102336551.htm"
+        }
+      ]
+    },
+    {
+      "id": "dong-thap",
+      "name": "Đồng Tháp",
+      "kind": "tinh",
+      "region": "nam",
+      "lat": 10.3513,
+      "lon": 106.3713,
+      "seat": "Mỹ Tho",
+      "formerly": [
+        "Đồng Tháp",
+        "Tiền Giang"
+      ]
+    },
+    {
+      "id": "gia-lai",
+      "name": "Gia Lai",
+      "kind": "tinh",
+      "region": "trung",
+      "lat": 13.7701,
+      "lon": 109.2318,
+      "seat": "Quy Nhơn",
+      "formerly": [
+        "Gia Lai",
+        "Bình Định"
+      ]
+    },
+    {
+      "id": "ha-noi",
+      "name": "Hà Nội",
+      "kind": "thanh-pho",
+      "region": "bac",
+      "lat": 21.0285,
+      "lon": 105.8542,
+      "seat": "Hà Nội",
+      "formerly": []
+    },
+    {
+      "id": "ha-tinh",
+      "name": "Hà Tĩnh",
+      "kind": "tinh",
+      "region": "trung",
+      "lat": 18.3429,
+      "lon": 105.8978,
+      "seat": "Hà Tĩnh",
+      "formerly": []
+    },
+    {
+      "id": "hai-phong",
+      "name": "Hải Phòng",
+      "kind": "thanh-pho",
+      "region": "bac",
+      "lat": 20.8651,
+      "lon": 106.6838,
+      "seat": "Hải Phòng",
+      "formerly": [
+        "Hải Phòng",
+        "Hải Dương"
+      ]
+    },
+    {
+      "id": "ho-chi-minh",
+      "name": "TP. Hồ Chí Minh",
+      "kind": "thanh-pho",
+      "region": "nam",
+      "lat": 10.7756,
+      "lon": 106.7019,
+      "seat": "TP. Hồ Chí Minh",
+      "formerly": [
+        "TP. Hồ Chí Minh",
+        "Bình Dương",
+        "Bà Rịa - Vũng Tàu"
+      ],
+      "aka": [
+        "Thành phố Hồ Chí Minh",
+        "Hồ Chí Minh",
+        "Sài Gòn"
+      ]
+    },
+    {
+      "id": "hue",
+      "name": "Huế",
+      "kind": "thanh-pho",
+      "region": "trung",
+      "lat": 16.4639,
+      "lon": 107.5867,
+      "seat": "Huế",
+      "formerly": [],
+      "aka": [
+        "Thừa Thiên Huế"
+      ]
+    },
+    {
+      "id": "hung-yen",
+      "name": "Hưng Yên",
+      "kind": "tinh",
+      "region": "bac",
+      "lat": 20.6589,
+      "lon": 106.062,
+      "seat": "Hưng Yên",
+      "formerly": [
+        "Hưng Yên",
+        "Thái Bình"
+      ]
+    },
+    {
+      "id": "khanh-hoa",
+      "name": "Khánh Hòa",
+      "kind": "tinh",
+      "region": "trung",
+      "lat": 12.2349,
+      "lon": 109.1941,
+      "seat": "Nha Trang",
+      "formerly": [
+        "Khánh Hòa",
+        "Ninh Thuận"
+      ],
+      "aka": [
+        "Khánh Hoà"
+      ]
+    },
+    {
+      "id": "lai-chau",
+      "name": "Lai Châu",
+      "kind": "tinh",
+      "region": "bac",
+      "lat": 22.3862,
+      "lon": 103.4702,
+      "seat": "Lai Châu",
+      "formerly": []
+    },
+    {
+      "id": "lam-dong",
+      "name": "Lâm Đồng",
+      "kind": "tinh",
+      "region": "trung",
+      "lat": 11.9404,
+      "lon": 108.4583,
+      "seat": "Đà Lạt",
+      "formerly": [
+        "Lâm Đồng",
+        "Đắk Nông",
+        "Bình Thuận"
+      ]
+    },
+    {
+      "id": "lang-son",
+      "name": "Lạng Sơn",
+      "kind": "tinh",
+      "region": "bac",
+      "lat": 21.8468,
+      "lon": 106.7545,
+      "seat": "Lạng Sơn",
+      "formerly": []
+    },
+    {
+      "id": "lao-cai",
+      "name": "Lào Cai",
+      "kind": "tinh",
+      "region": "bac",
+      "lat": 21.722,
+      "lon": 104.9121,
+      "seat": "Yên Bái",
+      "formerly": [
+        "Lào Cai",
+        "Yên Bái"
+      ]
+    },
+    {
+      "id": "nghe-an",
+      "name": "Nghệ An",
+      "kind": "tinh",
+      "region": "trung",
+      "lat": 18.6596,
+      "lon": 105.697,
+      "seat": "Vinh",
+      "formerly": []
+    },
+    {
+      "id": "ninh-binh",
+      "name": "Ninh Bình",
+      "kind": "tinh",
+      "region": "bac",
+      "lat": 20.2421,
+      "lon": 105.9746,
+      "seat": "Ninh Bình",
+      "formerly": [
+        "Ninh Bình",
+        "Hà Nam",
+        "Nam Định"
+      ]
+    },
+    {
+      "id": "phu-tho",
+      "name": "Phú Thọ",
+      "kind": "tinh",
+      "region": "bac",
+      "lat": 21.317,
+      "lon": 105.3897,
+      "seat": "Việt Trì",
+      "formerly": [
+        "Phú Thọ",
+        "Vĩnh Phúc",
+        "Hòa Bình"
+      ]
+    },
+    {
+      "id": "quang-ngai",
+      "name": "Quảng Ngãi",
+      "kind": "tinh",
+      "region": "trung",
+      "lat": 15.1151,
+      "lon": 108.8112,
+      "seat": "Quảng Ngãi",
+      "formerly": [
+        "Quảng Ngãi",
+        "Kon Tum"
+      ]
+    },
+    {
+      "id": "quang-ninh",
+      "name": "Quảng Ninh",
+      "kind": "tinh",
+      "region": "bac",
+      "lat": 20.9564,
+      "lon": 107.0826,
+      "seat": "Hạ Long",
+      "formerly": [],
+      "laterChanges": [
+        {
+          "date": "2026-09-01",
+          "kind": "thanh-pho",
+          "legalBasis": "Nghị quyết số 36/2026/QH16 ngày 24/8/2026 của Quốc hội về việc thành lập thành phố Quảng Ninh",
+          "source": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-36-2026-qh16-thanh-lap-thanh-pho-quang-ninh-tu-1-9-2026-119260903082603583.htm"
+        }
+      ]
+    },
+    {
+      "id": "quang-tri",
+      "name": "Quảng Trị",
+      "kind": "tinh",
+      "region": "trung",
+      "lat": 17.4598,
+      "lon": 106.6122,
+      "seat": "Đồng Hới",
+      "formerly": [
+        "Quảng Trị",
+        "Quảng Bình"
+      ]
+    },
+    {
+      "id": "son-la",
+      "name": "Sơn La",
+      "kind": "tinh",
+      "region": "bac",
+      "lat": 21.3187,
+      "lon": 103.9141,
+      "seat": "Sơn La",
+      "formerly": []
+    },
+    {
+      "id": "tay-ninh",
+      "name": "Tây Ninh",
+      "kind": "tinh",
+      "region": "nam",
+      "lat": 10.5427,
+      "lon": 106.4096,
+      "seat": "Tân An",
+      "formerly": [
+        "Tây Ninh",
+        "Long An"
+      ]
+    },
+    {
+      "id": "thai-nguyen",
+      "name": "Thái Nguyên",
+      "kind": "tinh",
+      "region": "bac",
+      "lat": 21.5954,
+      "lon": 105.8388,
+      "seat": "Thái Nguyên",
+      "formerly": [
+        "Thái Nguyên",
+        "Bắc Kạn"
+      ]
+    },
+    {
+      "id": "thanh-hoa",
+      "name": "Thanh Hóa",
+      "kind": "tinh",
+      "region": "trung",
+      "lat": 19.8128,
+      "lon": 105.7678,
+      "seat": "Thanh Hóa",
+      "formerly": [],
+      "aka": [
+        "Thanh Hoá"
+      ]
+    },
+    {
+      "id": "tuyen-quang",
+      "name": "Tuyên Quang",
+      "kind": "tinh",
+      "region": "bac",
+      "lat": 21.8202,
+      "lon": 105.1923,
+      "seat": "Tuyên Quang",
+      "formerly": [
+        "Tuyên Quang",
+        "Hà Giang"
+      ]
+    },
+    {
+      "id": "vinh-long",
+      "name": "Vĩnh Long",
+      "kind": "tinh",
+      "region": "nam",
+      "lat": 10.2484,
+      "lon": 105.9641,
+      "seat": "Vĩnh Long",
+      "formerly": [
+        "Vĩnh Long",
+        "Bến Tre",
+        "Trà Vinh"
+      ]
+    }
+  ]
+}

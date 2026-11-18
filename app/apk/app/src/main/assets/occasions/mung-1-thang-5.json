@@ -1,0 +1,22 @@
+{
+  "format": 1,
+  "id": "mung-1-thang-5",
+  "name": "Mùng 1 tháng Năm",
+  "aka": [
+    "Mồng 1 tháng 5 âm",
+    "Ngày sóc tháng Năm"
+  ],
+  "rule": {
+    "kind": "lunarMonthly",
+    "month": 5,
+    "day": 1
+  },
+  "major": false,
+  "calendar": "lunar",
+  "vanKhan": [
+    "ram-mung-1-hang-thang"
+  ],
+  "summary": "Mùng 1 tháng Năm là ngày đầu tháng 5 âm lịch, ngày nhiều gia đình thắp hương, cúng gia tiên và thần linh trong nhà.",
+  "body": "Mùng 1 tháng Năm là ngày đầu tiên của tháng 5 âm lịch (ngày sóc, trăng non). Theo tục, các gia đình dâng hương, hoa, quả lên bàn thờ gia tiên và thần linh để cầu bình an cho cả tháng; nhiều người ăn chay hoặc đi lễ chùa.",
+  "updated": "2026-10-25"
+}

@@ -1,0 +1,24 @@
+{
+  "format": 1,
+  "id": "thanh-minh",
+  "name": "Tiết Thanh minh",
+  "aka": [
+    "Thanh minh",
+    "Tảo mộ"
+  ],
+  "slugAliases": [
+    "tao-mo"
+  ],
+  "rule": {
+    "kind": "solarTerm",
+    "index": 1
+  },
+  "major": false,
+  "calendar": "term",
+  "vanKhan": [
+    "thanh-minh-tao-mo"
+  ],
+  "summary": "Tiết Thanh minh bắt đầu khoảng 4–5/4 dương lịch theo vị trí Mặt Trời, dịp con cháu đi tảo mộ, sửa sang phần mộ tổ tiên.",
+  "body": "Thanh minh là tiết khí thứ năm trong năm, bắt đầu khi Mặt Trời ở kinh độ 15°, thường vào ngày 4 hoặc 5/4 dương lịch (tính theo giờ Việt Nam). Ngày bắt đầu tiết là ngày đầu tiên theo giờ UTC+7 thuộc tiết Thanh minh. Trong tiết này, các gia đình đi tảo mộ, dọn cỏ, đắp lại mộ và thắp hương tổ tiên.",
+  "updated": "2026-10-25"
+}

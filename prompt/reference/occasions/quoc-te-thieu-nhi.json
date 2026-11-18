@@ -1,0 +1,22 @@
+{
+  "format": 1,
+  "id": "quoc-te-thieu-nhi",
+  "name": "Ngày Quốc tế Thiếu nhi",
+  "aka": [
+    "1 tháng 6",
+    "Tết Thiếu nhi"
+  ],
+  "slugAliases": [
+    "1-thang-6"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "quoc-te-thieu-nhi"
+  },
+  "major": false,
+  "calendar": "solar",
+  "vanKhan": [],
+  "summary": "Ngày Quốc tế Thiếu nhi là 1/6, dịp vui chơi và tặng quà cho các em nhỏ; không phải ngày nghỉ lễ.",
+  "body": "Ngày 1 tháng 6 là Ngày Quốc tế Thiếu nhi, quen gọi là Tết Thiếu nhi. Đây là ngày kỷ niệm, không phải ngày nghỉ theo luật.",
+  "updated": "2026-11-03"
+}

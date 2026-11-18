@@ -1,0 +1,24 @@
+{
+  "format": 1,
+  "id": "ngay-van-hoa-viet-nam",
+  "name": "Ngày Văn hóa Việt Nam",
+  "aka": [
+    "24 tháng 11"
+  ],
+  "slugAliases": [
+    "24-thang-11"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "ngay-van-hoa-viet-nam"
+  },
+  "major": false,
+  "calendar": "solar",
+  "vanKhan": [],
+  "sources": [
+    "nq-28-2026-qh16"
+  ],
+  "summary": "Ngày Văn hóa Việt Nam là 24/11 hằng năm; từ năm 2026 người lao động được nghỉ một ngày hưởng nguyên lương.",
+  "body": "Ngày 24 tháng 11 hằng năm là Ngày Văn hóa Việt Nam theo Nghị quyết 28/2026/QH16 của Quốc hội. Người lao động được nghỉ làm việc và hưởng nguyên lương; ngày nghỉ đầu tiên là 24/11/2026.",
+  "updated": "2026-10-28"
+}

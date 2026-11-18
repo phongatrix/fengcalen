@@ -1,0 +1,30 @@
+{
+  "architecture": "unknown",
+  "capabilities": [],
+  "coverage": {
+    "functions": 0,
+    "instructions": 0,
+    "opaque_bytes": 18743296,
+    "strings": 50034,
+    "truncated": false
+  },
+  "crypto": [
+    "TEA/XTEA delta",
+    "ChaCha sigma",
+    "base64 alphabet"
+  ],
+  "entropy": 7.742552835925136,
+  "format": "ZIP container",
+  "imports": [],
+  "mitigations": [],
+  "name": "base.apk",
+  "rules": [
+    "base64 alphabet",
+    "MZ header",
+    "OpenSSL library",
+    "zlib library"
+  ],
+  "sha256": "64c0e6aebc55d1d7e9ad03b9f26af78595f1e5ee8ee7416b191f47ce1b951a7b",
+  "size": 26938702,
+  "vulnerabilities": []
+}

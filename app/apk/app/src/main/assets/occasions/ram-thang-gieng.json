@@ -1,0 +1,25 @@
+{
+  "format": 1,
+  "id": "ram-thang-gieng",
+  "name": "Rằm tháng Giêng",
+  "aka": [
+    "Tết Nguyên tiêu",
+    "Tết Thượng nguyên"
+  ],
+  "slugAliases": [
+    "ram-thang-1",
+    "tet-nguyen-tieu"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "ram-thang-gieng"
+  },
+  "major": true,
+  "calendar": "lunar",
+  "vanKhan": [
+    "ram-thang-gieng"
+  ],
+  "summary": "Rằm tháng Giêng (Tết Nguyên tiêu) là ngày 15 tháng Giêng âm lịch, ngày rằm đầu tiên của năm, dịp cúng gia tiên và đi lễ chùa.",
+  "body": "Rằm tháng Giêng là ngày 15 tháng 1 âm lịch, còn gọi là Tết Nguyên tiêu hay Tết Thượng nguyên. Dân gian có câu \"Lễ Phật quanh năm không bằng ngày rằm tháng Giêng\": nhiều gia đình cúng gia tiên, thần linh tại nhà và đi lễ chùa cầu an cho cả năm.",
+  "updated": "2026-10-25"
+}

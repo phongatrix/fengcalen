@@ -1,0 +1,24 @@
+{
+  "format": 1,
+  "id": "quoc-te-lao-dong",
+  "name": "Ngày Quốc tế Lao động",
+  "aka": [
+    "1 tháng 5"
+  ],
+  "slugAliases": [
+    "1-thang-5"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "quoc-te-lao-dong"
+  },
+  "major": false,
+  "calendar": "solar",
+  "vanKhan": [],
+  "sources": [
+    "blld-2019"
+  ],
+  "summary": "Ngày Quốc tế Lao động là 1/5; người lao động được nghỉ một ngày hưởng nguyên lương.",
+  "body": "Ngày 1 tháng 5 là Ngày Quốc tế Lao động. Đây là ngày nghỉ lễ có hưởng lương theo Điều 112 Bộ luật Lao động 2019.",
+  "updated": "2026-10-25"
+}

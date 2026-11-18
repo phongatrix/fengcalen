@@ -1,0 +1,21 @@
+{
+  "format": 1,
+  "id": "gia-dinh-viet-nam",
+  "name": "Ngày Gia đình Việt Nam",
+  "aka": [
+    "28 tháng 6"
+  ],
+  "slugAliases": [
+    "28-thang-6"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "gia-dinh-viet-nam"
+  },
+  "major": false,
+  "calendar": "solar",
+  "vanKhan": [],
+  "summary": "Ngày Gia đình Việt Nam là 28/6, dịp sum họp và quan tâm đến người thân; không phải ngày nghỉ lễ.",
+  "body": "Ngày 28 tháng 6 là Ngày Gia đình Việt Nam. Đây là ngày kỷ niệm, không phải ngày nghỉ theo luật.",
+  "updated": "2026-11-03"
+}

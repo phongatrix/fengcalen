@@ -1,0 +1,18 @@
+{
+  "format": 1,
+  "id": "dong-chi",
+  "name": "Tiết Đông chí",
+  "aka": [
+    "Đông chí"
+  ],
+  "rule": {
+    "kind": "solarTerm",
+    "index": 18
+  },
+  "major": false,
+  "calendar": "term",
+  "vanKhan": [],
+  "summary": "Tiết Đông chí bắt đầu khoảng 21–22/12 dương lịch, ngày có đêm dài nhất năm ở Bắc bán cầu; một số gia đình cúng gia tiên ngày này.",
+  "body": "Đông chí là tiết khí bắt đầu khi Mặt Trời ở kinh độ 270°, thường vào ngày 21 hoặc 22/12 dương lịch theo giờ Việt Nam. Đông chí quyết định tháng 11 âm lịch: tháng âm chứa Đông chí luôn là tháng 11. Một số gia đình, nhất là người gốc Hoa, có tục cúng gia tiên và ăn chè trôi nước vào ngày này.",
+  "updated": "2026-10-25"
+}

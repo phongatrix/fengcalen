@@ -1,0 +1,25 @@
+{
+  "format": 1,
+  "id": "trung-thu",
+  "name": "Tết Trung thu",
+  "aka": [
+    "Tết Trông trăng",
+    "Tết thiếu nhi",
+    "Rằm tháng Tám"
+  ],
+  "slugAliases": [
+    "ram-thang-8"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "trung-thu"
+  },
+  "major": true,
+  "calendar": "lunar",
+  "vanKhan": [
+    "ram-mung-1-hang-thang"
+  ],
+  "summary": "Tết Trung thu là ngày rằm tháng 8 âm lịch, tết của trẻ em với bánh nướng, bánh dẻo, đèn ông sao, rước đèn và phá cỗ trông trăng.",
+  "body": "Tết Trung thu rơi vào ngày 15 tháng 8 âm lịch, khi trăng được coi là tròn và sáng nhất năm. Trẻ em rước đèn ông sao, đèn kéo quân, múa lân; gia đình bày cỗ bánh nướng, bánh dẻo, hoa quả và cúng gia tiên rồi phá cỗ.",
+  "updated": "2026-10-25"
+}

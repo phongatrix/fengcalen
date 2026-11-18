@@ -1,0 +1,30 @@
+# Built application files
+**/build/
+*.apk
+*.aab
+
+# Except release APKs
+!app/apk/release/*.apk
+
+# Android / Gradle cache
+.gradle/
+.kotlin/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Local configuration
+local.properties
+
+# Android Studio & IDE
+.idea/
+*.iml
+.vscode/
+
+# Python cache & scratch
+__pycache__/
+*.py[cod]
+
+# OS generated files
+.DS_Store
+Thumbs.db

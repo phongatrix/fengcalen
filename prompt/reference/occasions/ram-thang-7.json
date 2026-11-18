@@ -1,0 +1,26 @@
+{
+  "format": 1,
+  "id": "ram-thang-7",
+  "name": "Rằm tháng Bảy",
+  "aka": [
+    "Lễ Vu Lan",
+    "Xá tội vong nhân",
+    "Rằm tháng 7"
+  ],
+  "slugAliases": [
+    "vu-lan"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "vu-lan"
+  },
+  "major": true,
+  "calendar": "lunar",
+  "vanKhan": [
+    "cung-chung-sinh-thang-7",
+    "ram-thang-7-gia-tien"
+  ],
+  "summary": "Rằm tháng Bảy là ngày 15 tháng 7 âm lịch, lễ Vu Lan báo hiếu cha mẹ và ngày xá tội vong nhân, cúng gia tiên và cúng chúng sinh.",
+  "body": "Rằm tháng Bảy (15/7 âm lịch) vừa là lễ Vu Lan của nhà Phật, dịp báo hiếu cha mẹ, ông bà, vừa là ngày xá tội vong nhân theo tín ngưỡng dân gian. Các gia đình cúng gia tiên trong nhà và cúng chúng sinh ngoài trời; nhiều nơi làm lễ trong cả tháng Bảy, thường trước ngày rằm.",
+  "updated": "2026-10-25"
+}

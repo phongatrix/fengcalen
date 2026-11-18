@@ -1,0 +1,26 @@
+{
+  "format": 1,
+  "id": "gio-to-hung-vuong",
+  "name": "Giỗ Tổ Hùng Vương",
+  "aka": [
+    "Lễ hội Đền Hùng",
+    "Ngày Giỗ Tổ"
+  ],
+  "slugAliases": [
+    "gio-to",
+    "10-thang-3"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "gio-to-hung-vuong"
+  },
+  "major": true,
+  "calendar": "lunar",
+  "vanKhan": [],
+  "sources": [
+    "blld-2019"
+  ],
+  "summary": "Giỗ Tổ Hùng Vương là ngày 10 tháng 3 âm lịch, ngày tưởng nhớ các Vua Hùng, người lao động được nghỉ một ngày hưởng nguyên lương.",
+  "body": "Giỗ Tổ Hùng Vương được tổ chức ngày 10 tháng 3 âm lịch hằng năm, lễ chính ở Đền Hùng (Phú Thọ). Đây là ngày nghỉ lễ có hưởng lương theo Điều 112 Bộ luật Lao động 2019. Ngày dương lịch thay đổi mỗi năm theo lịch âm.",
+  "updated": "2026-10-25"
+}

@@ -1,0 +1,21 @@
+{
+  "format": 1,
+  "id": "thay-thuoc-viet-nam",
+  "name": "Ngày Thầy thuốc Việt Nam",
+  "aka": [
+    "27 tháng 2"
+  ],
+  "slugAliases": [
+    "27-thang-2"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "thay-thuoc-viet-nam"
+  },
+  "major": false,
+  "calendar": "solar",
+  "vanKhan": [],
+  "summary": "Ngày Thầy thuốc Việt Nam là 27/2, dịp tri ân y bác sĩ; không phải ngày nghỉ lễ.",
+  "body": "Ngày 27 tháng 2 là Ngày Thầy thuốc Việt Nam, dịp tri ân những người làm nghề y. Đây là ngày kỷ niệm, không phải ngày nghỉ theo luật.",
+  "updated": "2026-11-03"
+}

@@ -1,0 +1,23 @@
+{
+  "architecture": "unknown",
+  "capabilities": [],
+  "coverage": {
+    "functions": 0,
+    "instructions": 0,
+    "opaque_bytes": 4096,
+    "strings": 172,
+    "truncated": false
+  },
+  "crypto": [],
+  "entropy": 3.4867745106604167,
+  "format": "ZIP container",
+  "imports": [],
+  "mitigations": [],
+  "name": "split_config.arm64_v8a.apk",
+  "rules": [
+    "ELF executable"
+  ],
+  "sha256": "d35e429e1ab1a4e295bbbf8627dae38e80e99ec791d9857913f8864b8d4ce10b",
+  "size": 53576,
+  "vulnerabilities": []
+}

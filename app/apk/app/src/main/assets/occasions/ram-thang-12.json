@@ -1,0 +1,21 @@
+{
+  "format": 1,
+  "id": "ram-thang-12",
+  "name": "Rằm tháng Chạp",
+  "aka": [
+    "Rằm tháng 12 âm"
+  ],
+  "rule": {
+    "kind": "lunarMonthly",
+    "month": 12,
+    "day": 15
+  },
+  "major": false,
+  "calendar": "lunar",
+  "vanKhan": [
+    "ram-mung-1-hang-thang"
+  ],
+  "summary": "Rằm tháng Chạp là ngày 15 tháng 12 âm lịch, ngày trăng tròn, dịp các gia đình thắp hương cúng gia tiên và thần linh.",
+  "body": "Rằm tháng Chạp là ngày 15 tháng 12 âm lịch (ngày vọng, trăng tròn). Như ngày mùng 1, các gia đình dâng hương, hoa, quả, có nhà làm mâm cơm cúng gia tiên và thần linh trong nhà.",
+  "updated": "2026-10-25"
+}

@@ -1,0 +1,21 @@
+{
+  "format": 1,
+  "id": "ram-thang-9",
+  "name": "Rằm tháng Chín",
+  "aka": [
+    "Rằm tháng 9 âm"
+  ],
+  "rule": {
+    "kind": "lunarMonthly",
+    "month": 9,
+    "day": 15
+  },
+  "major": false,
+  "calendar": "lunar",
+  "vanKhan": [
+    "ram-mung-1-hang-thang"
+  ],
+  "summary": "Rằm tháng Chín là ngày 15 tháng 9 âm lịch, ngày trăng tròn, dịp các gia đình thắp hương cúng gia tiên và thần linh.",
+  "body": "Rằm tháng Chín là ngày 15 tháng 9 âm lịch (ngày vọng, trăng tròn). Như ngày mùng 1, các gia đình dâng hương, hoa, quả, có nhà làm mâm cơm cúng gia tiên và thần linh trong nhà.",
+  "updated": "2026-10-25"
+}

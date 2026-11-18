@@ -1,0 +1,23 @@
+{
+  "format": 1,
+  "id": "tet-han-thuc",
+  "name": "Tết Hàn thực",
+  "aka": [
+    "Tết bánh trôi bánh chay",
+    "Mùng 3 tháng 3"
+  ],
+  "slugAliases": [
+    "han-thuc"
+  ],
+  "rule": {
+    "kind": "lunar",
+    "month": 3,
+    "day": 3
+  },
+  "major": true,
+  "calendar": "lunar",
+  "vanKhan": [],
+  "summary": "Tết Hàn thực là ngày mùng 3 tháng 3 âm lịch, khi nhiều gia đình làm bánh trôi, bánh chay dâng cúng gia tiên.",
+  "body": "Tết Hàn thực rơi vào ngày mùng 3 tháng 3 âm lịch. Người Việt giữ tục nấu bánh trôi, bánh chay để cúng tổ tiên, thường không kiêng đồ nóng như tục gốc. Ngày này hay gần tiết Thanh minh nên nhiều nhà kết hợp đi tảo mộ.",
+  "updated": "2026-10-25"
+}

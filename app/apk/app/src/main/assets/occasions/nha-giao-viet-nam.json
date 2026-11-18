@@ -1,0 +1,21 @@
+{
+  "format": 1,
+  "id": "nha-giao-viet-nam",
+  "name": "Ngày Nhà giáo Việt Nam",
+  "aka": [
+    "20 tháng 11"
+  ],
+  "slugAliases": [
+    "20-thang-11"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "nha-giao-viet-nam"
+  },
+  "major": false,
+  "calendar": "solar",
+  "vanKhan": [],
+  "summary": "Ngày Nhà giáo Việt Nam là 20/11, dịp học trò tri ân thầy cô; không phải ngày nghỉ lễ.",
+  "body": "Ngày 20 tháng 11 là Ngày Nhà giáo Việt Nam, dịp tri ân thầy cô. Đây là ngày kỷ niệm, không phải ngày nghỉ theo luật.",
+  "updated": "2026-10-25"
+}

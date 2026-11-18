@@ -1,0 +1,21 @@
+{
+  "format": 1,
+  "id": "quoc-te-phu-nu",
+  "name": "Ngày Quốc tế Phụ nữ",
+  "aka": [
+    "8 tháng 3"
+  ],
+  "slugAliases": [
+    "8-thang-3"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "quoc-te-phu-nu"
+  },
+  "major": false,
+  "calendar": "solar",
+  "vanKhan": [],
+  "summary": "Ngày Quốc tế Phụ nữ là 8/3, dịp tặng hoa, chúc mừng mẹ, vợ, chị em và đồng nghiệp nữ; không phải ngày nghỉ lễ.",
+  "body": "Ngày 8 tháng 3 là Ngày Quốc tế Phụ nữ. Ở Việt Nam đây là ngày kỷ niệm, không phải ngày nghỉ theo luật.",
+  "updated": "2026-10-25"
+}

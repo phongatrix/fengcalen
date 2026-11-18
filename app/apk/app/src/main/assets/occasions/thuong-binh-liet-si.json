@@ -1,0 +1,21 @@
+{
+  "format": 1,
+  "id": "thuong-binh-liet-si",
+  "name": "Ngày Thương binh – Liệt sĩ",
+  "aka": [
+    "27 tháng 7"
+  ],
+  "slugAliases": [
+    "27-thang-7"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "thuong-binh-liet-si"
+  },
+  "major": false,
+  "calendar": "solar",
+  "vanKhan": [],
+  "summary": "Ngày Thương binh – Liệt sĩ là 27/7, dịp tri ân thương binh, liệt sĩ và gia đình người có công; không phải ngày nghỉ lễ.",
+  "body": "Ngày 27 tháng 7 là Ngày Thương binh – Liệt sĩ, dịp tưởng nhớ, tri ân người có công với đất nước. Đây là ngày kỷ niệm, không phải ngày nghỉ theo luật.",
+  "updated": "2026-11-03"
+}

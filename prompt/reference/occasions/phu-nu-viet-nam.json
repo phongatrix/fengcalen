@@ -1,0 +1,21 @@
+{
+  "format": 1,
+  "id": "phu-nu-viet-nam",
+  "name": "Ngày Phụ nữ Việt Nam",
+  "aka": [
+    "20 tháng 10"
+  ],
+  "slugAliases": [
+    "20-thang-10"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "phu-nu-viet-nam"
+  },
+  "major": false,
+  "calendar": "solar",
+  "vanKhan": [],
+  "summary": "Ngày Phụ nữ Việt Nam là 20/10, ngày thành lập Hội Liên hiệp Phụ nữ Việt Nam (1930); không phải ngày nghỉ lễ.",
+  "body": "Ngày 20 tháng 10 kỷ niệm ngày thành lập Hội Liên hiệp Phụ nữ Việt Nam năm 1930. Đây là ngày kỷ niệm, không phải ngày nghỉ theo luật.",
+  "updated": "2026-10-25"
+}

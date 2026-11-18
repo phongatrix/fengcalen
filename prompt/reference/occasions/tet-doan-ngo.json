@@ -1,0 +1,25 @@
+{
+  "format": 1,
+  "id": "tet-doan-ngo",
+  "name": "Tết Đoan Ngọ",
+  "aka": [
+    "Tết diệt sâu bọ",
+    "Tết Đoan Dương",
+    "Mùng 5 tháng 5"
+  ],
+  "slugAliases": [
+    "doan-ngo"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "tet-doan-ngo"
+  },
+  "major": true,
+  "calendar": "lunar",
+  "vanKhan": [
+    "tet-doan-ngo"
+  ],
+  "summary": "Tết Đoan Ngọ là ngày mùng 5 tháng 5 âm lịch, còn gọi Tết diệt sâu bọ, với tục ăn rượu nếp, hoa quả và cúng gia tiên buổi sáng.",
+  "body": "Tết Đoan Ngọ rơi vào ngày mùng 5 tháng 5 âm lịch. Theo tục, sáng sớm cả nhà ăn rượu nếp, mận, vải và trứng để \"diệt sâu bọ\", cúng gia tiên vào giờ Ngọ; miền Nam có nơi gói bánh ú. Đây là ngày lễ truyền thống, không phải ngày nghỉ theo luật.",
+  "updated": "2026-10-25"
+}

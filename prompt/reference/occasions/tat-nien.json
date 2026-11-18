@@ -1,0 +1,28 @@
+{
+  "format": 1,
+  "id": "tat-nien",
+  "name": "Tất niên",
+  "aka": [
+    "Lễ tất niên",
+    "Cúng tất niên",
+    "Cơm tất niên",
+    "Rước ông bà"
+  ],
+  "slugAliases": [
+    "cung-tat-nien",
+    "le-tat-nien"
+  ],
+  "rule": {
+    "kind": "lunar",
+    "month": 12,
+    "lastDayOfMonth": true
+  },
+  "major": false,
+  "calendar": "lunar",
+  "vanKhan": [
+    "tat-nien"
+  ],
+  "summary": "Tất niên là lễ cúng cuối năm âm lịch, nhiều gia đình làm vào chiều ngày cuối tháng Chạp để mời gia tiên về ăn Tết và sum họp bữa cơm cuối năm.",
+  "body": "Theo phong tục, sau lễ ông Công ông Táo ngày 23 tháng Chạp, mỗi gia đình chọn một ngày trong những ngày cuối năm để cúng tất niên; nhiều nhà làm vào chiều ngày cuối cùng của tháng Chạp (ngày 30, hoặc 29 nếu tháng thiếu), trước lễ giao thừa. Lịch Vạn Niên lấy ngày cuối tháng Chạp làm ngày tham khảo, gia đình có thể cúng sớm hơn tùy nếp nhà. Mâm cỗ khác nhau theo vùng: miền Bắc thường có bánh chưng, gà luộc, giò, canh măng; miền Nam thường có bánh tét, thịt kho trứng, canh khổ qua. Ở nhiều nơi miền Nam, lễ này gắn với tục rước ông bà về ăn Tết.",
+  "updated": "2026-10-25"
+}

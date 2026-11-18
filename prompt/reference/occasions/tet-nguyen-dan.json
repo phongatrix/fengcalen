@@ -1,0 +1,33 @@
+{
+  "format": 1,
+  "id": "tet-nguyen-dan",
+  "name": "Tết Nguyên Đán",
+  "aka": [
+    "Tết Âm lịch",
+    "Tết Cả",
+    "Tết Ta"
+  ],
+  "slugAliases": [
+    "tet"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "tet-nguyen-dan-1",
+    "alsoHolidayIds": [
+      "tet-nguyen-dan-2",
+      "tet-nguyen-dan-3"
+    ]
+  },
+  "major": true,
+  "nameWithYear": true,
+  "calendar": "lunar",
+  "vanKhan": [
+    "mung-1-tet-gia-tien"
+  ],
+  "sources": [
+    "blld-2019"
+  ],
+  "summary": "Tết Nguyên Đán là ngày mùng 1 tháng Giêng âm lịch, mở đầu năm mới, dịp sum họp gia đình, cúng gia tiên và chúc Tết.",
+  "body": "Tết Nguyên Đán bắt đầu từ ngày mùng 1 tháng Giêng âm lịch, tính theo giờ Việt Nam (UTC+7), nên có năm khác ngày với Tết ở Trung Quốc. Người lao động được nghỉ Tết Âm lịch 5 ngày theo Bộ luật Lao động 2019; lịch nghỉ cụ thể do Thủ tướng quyết định mỗi năm. Ba ngày mùng 1, mùng 2, mùng 3 là chính Tết: mùng 1 thăm họ nội, mùng 2 họ ngoại, mùng 3 thầy cô theo tục xưa. Từ mùng 3 trở đi, nhiều nhà làm lễ hóa vàng (miền Nam gọi là đưa ông bà) để tiễn ông bà sau Tết.",
+  "updated": "2026-10-25"
+}

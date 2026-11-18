@@ -1,0 +1,25 @@
+{
+  "format": 1,
+  "id": "giai-phong-mien-nam",
+  "name": "Ngày Giải phóng miền Nam",
+  "aka": [
+    "Ngày Thống nhất",
+    "30 tháng 4"
+  ],
+  "slugAliases": [
+    "30-thang-4"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "giai-phong-mien-nam"
+  },
+  "major": false,
+  "calendar": "solar",
+  "vanKhan": [],
+  "sources": [
+    "blld-2019"
+  ],
+  "summary": "Ngày Giải phóng miền Nam, thống nhất đất nước là 30/4; người lao động được nghỉ một ngày hưởng nguyên lương.",
+  "body": "Ngày 30 tháng 4 kỷ niệm ngày giải phóng miền Nam, thống nhất đất nước (1975). Đây là ngày nghỉ lễ có hưởng lương theo Điều 112 Bộ luật Lao động 2019, thường liền với ngày 1/5.",
+  "updated": "2026-10-25"
+}

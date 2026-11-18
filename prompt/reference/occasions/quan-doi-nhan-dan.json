@@ -1,0 +1,22 @@
+{
+  "format": 1,
+  "id": "quan-doi-nhan-dan",
+  "name": "Ngày thành lập Quân đội nhân dân Việt Nam",
+  "aka": [
+    "22 tháng 12",
+    "Ngày Quốc phòng toàn dân"
+  ],
+  "slugAliases": [
+    "22-thang-12"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "quan-doi-nhan-dan"
+  },
+  "major": false,
+  "calendar": "solar",
+  "vanKhan": [],
+  "summary": "Ngày thành lập Quân đội nhân dân Việt Nam là 22/12 (1944), cũng là Ngày hội Quốc phòng toàn dân; không phải ngày nghỉ lễ.",
+  "body": "Ngày 22 tháng 12 kỷ niệm ngày thành lập Quân đội nhân dân Việt Nam năm 1944. Đây là ngày kỷ niệm, không phải ngày nghỉ theo luật.",
+  "updated": "2026-10-25"
+}

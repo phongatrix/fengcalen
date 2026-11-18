@@ -1,0 +1,25 @@
+{
+  "format": 1,
+  "id": "tet-duong-lich",
+  "name": "Tết Dương lịch",
+  "aka": [
+    "Năm mới",
+    "Ngày đầu năm"
+  ],
+  "slugAliases": [
+    "1-thang-1"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "tet-duong-lich"
+  },
+  "major": false,
+  "calendar": "solar",
+  "vanKhan": [],
+  "sources": [
+    "blld-2019"
+  ],
+  "summary": "Tết Dương lịch là ngày 1/1, ngày đầu năm theo lịch Gregory; người lao động được nghỉ một ngày hưởng nguyên lương.",
+  "body": "Tết Dương lịch rơi vào ngày 1 tháng 1 hằng năm. Đây là ngày nghỉ lễ có hưởng lương theo Điều 112 Bộ luật Lao động 2019.",
+  "updated": "2026-10-25"
+}

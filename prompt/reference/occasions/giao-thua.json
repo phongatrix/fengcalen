@@ -1,0 +1,25 @@
+{
+  "format": 1,
+  "id": "giao-thua",
+  "name": "Giao thừa",
+  "aka": [
+    "Đêm giao thừa",
+    "Trừ tịch"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "giao-thua"
+  },
+  "major": false,
+  "calendar": "lunar",
+  "vanKhan": [
+    "giao-thua-ngoai-troi",
+    "giao-thua-trong-nha"
+  ],
+  "sources": [
+    "blld-2019"
+  ],
+  "summary": "Giao thừa là ngày cuối cùng của năm âm lịch (29 hoặc 30 tháng Chạp), đêm chuyển sang năm mới với lễ cúng trong nhà và ngoài trời.",
+  "body": "Giao thừa rơi vào ngày cuối tháng Chạp: ngày 30 nếu tháng đủ, ngày 29 nếu tháng thiếu. Gần nửa đêm, các gia đình cúng giao thừa ngoài trời tiễn quan Hành khiển năm cũ, đón quan năm mới, rồi cúng gia tiên trong nhà. Nhiều nhà làm lễ tất niên vào chiều ngày cuối năm hoặc mấy ngày trước đó.",
+  "updated": "2026-10-25"
+}

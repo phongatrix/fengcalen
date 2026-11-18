@@ -1,0 +1,25 @@
+{
+  "format": 1,
+  "id": "quoc-khanh",
+  "name": "Quốc khánh",
+  "aka": [
+    "Ngày Quốc khánh",
+    "2 tháng 9"
+  ],
+  "slugAliases": [
+    "2-thang-9"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "quoc-khanh"
+  },
+  "major": false,
+  "calendar": "solar",
+  "vanKhan": [],
+  "sources": [
+    "blld-2019"
+  ],
+  "summary": "Quốc khánh là ngày 2/9; người lao động được nghỉ 2 ngày: 2/9 và một ngày liền kề trước hoặc sau do Thủ tướng quyết định.",
+  "body": "Ngày 2 tháng 9 kỷ niệm ngày Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập (1945). Theo Bộ luật Lao động 2019, người lao động được nghỉ ngày 2/9 và thêm một ngày liền kề (1/9 hoặc 3/9) chọn theo từng năm.",
+  "updated": "2026-10-25"
+}

@@ -1,0 +1,21 @@
+{
+  "format": 1,
+  "id": "sinh-nhat-bac-ho",
+  "name": "Ngày sinh Chủ tịch Hồ Chí Minh",
+  "aka": [
+    "19 tháng 5"
+  ],
+  "slugAliases": [
+    "19-thang-5"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "sinh-nhat-bac-ho"
+  },
+  "major": false,
+  "calendar": "solar",
+  "vanKhan": [],
+  "summary": "Ngày sinh Chủ tịch Hồ Chí Minh là 19/5 (1890); không phải ngày nghỉ lễ.",
+  "body": "Ngày 19 tháng 5 kỷ niệm ngày sinh Chủ tịch Hồ Chí Minh năm 1890. Đây là ngày kỷ niệm, không phải ngày nghỉ theo luật.",
+  "updated": "2026-11-03"
+}

@@ -1,0 +1,24 @@
+{
+  "architecture": "unknown",
+  "capabilities": [],
+  "coverage": {
+    "functions": 0,
+    "instructions": 0,
+    "opaque_bytes": 22937071,
+    "strings": 50000,
+    "truncated": false
+  },
+  "crypto": [],
+  "entropy": 7.999501325564529,
+  "format": "ZIP container",
+  "imports": [],
+  "mitigations": [],
+  "name": "lichvannien.apks",
+  "rules": [
+    "MZ header",
+    "RC4 key scheduling"
+  ],
+  "sha256": "4bee16fb569f65a465b0a408e57995e731e6dde1efbea105b5833e704a1d8b8e",
+  "size": 22973935,
+  "vulnerabilities": []
+}

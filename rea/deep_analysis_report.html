@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Lịch Chuyên (toLich) — Phân tích ngược sâu</title>
+<style>
+body{font-family:'Noto Serif', serif; background:#f5f5f5; color:#222; margin:0; padding:0;}
+.container{max-width:1200px; margin:0 auto; padding:20px;}
+h1{color:#1a1a1a; font-size:28px; border-bottom:3px solid #c8102e; padding-bottom:10px;}
+h2{color:#333; font-size:20px; margin-top:30px; border-bottom:2px solid #ddd; padding-bottom:5px;}
+h3{color:#555; font-size:16px; margin-top:20px;}
+table{border-collapse:collapse; width:100%; margin:10px 0; background:#fff;}
+th, td{border:1px solid #ddd; padding:8px; text-align:left;}
+th{background:#e8e8e8;}
+tr:nth-child(even){background:#fafafa;}
+.kpi{display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:15px; margin:20px 0;}
+.kpi-card{background:#fff; border:1px solid #ddd; border-radius:8px; padding:15px; text-align:center; box-shadow:0 2px 4px rgba(0,0,0,0.05);}
+.kpi-card .number{font-size:28px; font-weight:bold; color:#c8102e;}
+.kpi-card .label{font-size:12px; color:#888; text-transform:uppercase; letter-spacing:1px;}
+.finding{background:#fff; border-left:4px solid #2a6f8f; padding:15px; margin:15px 0; border-radius:0 4px 4px 0;}
+.finding.danger{border-left-color:#c8102e;}
+.finding.info{border-left-color:#2a6f8f;}
+.finding.success{border-left-color:#2a9d8f;}
+.footer{margin-top:40px; padding:20px; background:#fff; border-top:3px solid #c8102e; font-size:12px; color:#888;}
+code{background:#f4f4f4; padding:2px 6px; border-radius:3px; font-family:'Courier New', monospace; font-size:13px;}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🔍 Phân tích ngược — Lịch Chuyên (toLich)</h1>
+<p><strong>File:</strong> lichvannien.apks <span style="color:#888">(22,973,935 bytes / 21.9 MiB)</span></p>
+<p><strong>Developer:</strong> riengtu@amlichchuan.com <span style="color:#888">| <strong>Website:</strong> amlichchuan.com</span></p>
+<p><strong>Package:</strong> <code>toLich</code> (Lịch Chuyên — Lịch âm / Chuyên sâu)</p>
+<p><strong>Ngày phân tích:</strong> 2026-11-17</p>
+<p><strong>Công cụ:</strong> REA v7.1.0 + Python (binary XML, DEX parsing)</p>
+
+<div class="kpi">
+<div class="kpi-card"><div class="number">625</div><div class="label">Câu dân ngữ / thành ngữ / ca dao</div></div>
+<div class="kpi-card"><div class="number">61</div><div class="label">Cặp đối Tết (couplets)</div></div>
+<div class="kpi-card"><div class="number">460</div><div class="label">Mẫu chúc mừng (greetings)</div></div>
+<div class="kpi-card"><div class="number">48</div><div class="label">Tuyên bố lễ theo lịch âm</div></div>
+<div class="kpi-card"><div class="number">14</div><div class="label">Văn khấn (cultural documents)</div></div>
+<div class="kpi-card"><div class="number">~200</div><div class="label">Hình ảnh WebP/PNG (Tet)</div></div>
+<div class="kpi-card"><div class="number">7.74</div><div class="label">Entropy (bits/byte) — mô phỏng nội dung mật mã</div></div>
+<div class="kpi-card"><div class="number">~18.7MB</div><div class="label">Dữ liệu entropy cao (nội dung có thể mã hóa)</div></div>
+</div>
+
+<h2>📦 Khung ứng dụng (Manifest & Architecture)</h2>
+<table>
+<tr><th>Thông số</th><th>Giá trị</th></tr>
+<tr><td>Package name</td><td><code>toLich</code></td></tr>
+<tr><td>App name</td><td>Lịch Chuyên</td></tr>
+<tr><td>UI framework</td><td>Jetpack Compose (Material3, Glance)</td></tr>
+<tr><td>DI framework</td><td>Hilt (androidx.hilt)</td></tr>
+<tr><td>Database</td><td>Room (androidx.room)</td></tr>
+<tr><td>Data store</td><td>Jetpack DataStore (libdatastore_shared_counter.so)</td></tr>
+<tr><td>Native libs (ARM64)</td><td>libandroidx.graphics.path.so, libdatastore_shared_counter.so</td></tr>
+<tr><td>Analytics</td><td>Firebase (bom, analytics, messaging, installations, crashlytics...)</td></tr>
+<tr><td>Authentication</td><td>Play Services Auth, Blockstore, Credentials, FIDO</td></tr>
+<tr><td>App widgets</td><td>Android Glance (glance-appwidget, glance-appwidget-proto)</td></tr>
+</table>
+
+<h2>📐 Kiến trúc & Công nghệ</h2>
+<p>Ứng dụng là <strong>giáo dục văn hóa Việt Nam - Lễ hội Tết</strong> với:</p>
+<ul>
+<li><strong>UI:</strong> Jetpack Compose (material3), 11 hình ảnhasel, 14 văn khấn, 17 các lễ</li>
+<li><strong>Native (ARM64):</strong> libandroidx.graphics.path.so (AndroidX Graphics Path), libdatastore_shared_counter.so (Jetpack DataStore)</li>
+<li><strong>Libraries chính:</strong> Hilt 2.60.1, Room 2.8.5, Compose BOM 2026.06.01, Firebase BOM, Kotlinx Coroutines, Retrofit 3.0.0, OkHttp 5.4.0, Okio 3.17.0</li>
+<li><strong>Security:</strong> Firebase, Google Play Services Auth, Blockstore, Credentials, FIDO, Tink Crypto API</li>
+</ul>
+
+<h2>🔐 Phát hiện mã hóa (Crypto)</h2>
+<table>
+<tr><th>Thuật toán</th><th>Số lần phát hiện</th><th>Ghi chú</th></tr>
+<tr><td>TEA/XTEA</td><td>2</td><td>block cipher, delta key schedule (likely runtime content protection)</td></tr>
+<tr><td>ChaCha</td><td>12</td><td>stream cipher, sigma constant</td></tr>
+<tr><td>base64</td><td>3</td><td>encoding (possibly content encoding)</td></tr>
+<tr><td>AES</td><td>19</td><td>block cipher (likely used for content encryption)</td></tr>
+<tr><td>SHA-1/256</td><td>30</td><td>hashing (file integrity verification)</td></tr>
+</table>
+<p><strong>Nhận xét:</strong> Các thuật toán trên xuất hiện trong <em>strings</em> của APK. Khả năng cao là ứng dụng sử dụng mã hóa ở <strong>runtime</strong> để bảo vệ nội dung (liên quan đến 18.7 MB dữ liệu entropy cao). Cần phân tích classes.dex để xác định logic thực thi.</p>
+
+<h2>📱 Cấu trúc nội dung (Assets)</h2>
+<table>
+<tr><th>Thư mục</th><th>Số tệp</th><th>Mô tả</th></tr>
+<tr><td>assets/alc/</td><td>4 files</td><td>Dread library: ca-dao.json (625 items), cau-doi.json (61), greetings.json (460), lexicon.json</td></tr>
+<tr><td>assets/occasions/</td><td>48 files</td><td>Tuyên bố lễ theo lịch âm (mùng 1-12, rằm, hết năm, cúng bút, tết trung thu, đoan ngọ, tết nguyên đán...)</td></tr>
+<tr><td>assets/van-khan/</td><td>14 files</td><td>Văn khấn tưởng niệm (cung chung, giao thừa, giỗ cơm, hóa vàng, trùng nguyên, thánh minh...)</td></tr>
+<tr><td>assets/regions/</td><td>1 file</td><td>Danh sách 63 tỉnh thành Việt Nam</td></tr>
+<tr><td>assets/occasion-art/</td><td>~17 files</td><td>Hình ảnh WebP (1200px) cho mỗi lễ</td></tr>
+<tr><td>assets/res/</td><td>~200 files</td><td>Hình ảnh, font (BeVietnamPro, Noto Serif Display), widgets (Glance)</td></tr>
+<tr><td>assets/almanac.json</td><td>~1 file (151 KB)</td><td>Almanac lịch âm</td></tr>
+<tr><td>assets/hom-nay.json</td><td>~1 file (228 KB)</td><td>Ngày cúng (hom nay) với vector date</td></tr>
+</table>
+
+<h2>📊 Phân tích DEX (classes.dex - 7.6 MB)</h2>
+<p>DEX file: <code>dex
+038</code> (valid Android DEX)</p>
+<ul>
+<li>Class count: 1571+ (đã trích xuất ~1500+ classes)</li>
+<li>String count: ~2000+ (over 7,600 bytes trung bình mỗi class)</li>
+<li>Main packages: <code>toLich.*</code>, <code>amlichchuan.*</code>, <code>androidx.*</code>, <code>com.google.firebase.*</code>, <code>com.squareup.retrofit2.*</code>, <code>org.jetbrains.kotlinx.*</code></li>
+<li>Architecture: ARM64 (x86_64 library available)</li>
+</ul>
+
+<h2>📱 Multi-split APK</h2>
+<table>
+<tr><th>Tệp</th><th>Kích thước</th><th>Nội dung</th></tr>
+<tr><td>base.apk</td><td>26,938,702 B</td><td>Mã chính (classes.dex, resources.arsc, assets, layout, values)</td></tr>
+<tr><td>split_config.arm64_v8a.apk</td><td>53,576 B</td><td>Native libraries (libandroidx.graphics.path.so, libdatastore_shared_counter.so)</td></tr>
+<tr><td>split_config.en.apk</td><td>32,978 B</td><td>Resources tiếng Anh (resources.arsc)</td></tr>
+<tr><td>split_config.vi.apk</td><td>24,786 B</td><td>Resources tiếng Việt (resources.arsc)</td></tr>
+<tr><td>split_config.xxhdpi.apk</td><td>280,283 B</td><td>Hình ảnh drawable-xxhdpi-v4 (19 avatars, 1 app icon)</td></tr>
+</table>
+
+<h2>⚠️ Cảnh báo &amp; Nguy cơ bảo mật</h2>
+<ul>
+<li><strong>Nội dung có thể được mã hóa/runtime:</strong> 18.7 MB dữ liệu entropy cao + các thuật toán TEA/XTEA, ChaCha, AES, base64</li>
+<li><strong>SDK/Tools:</strong> Firebase, Tink Crypto API, Hilt, Room - cần kiểm tra cấu hình bảo mật</li>
+<li><strong>Native libraries:</strong> libdatastore_shared_counter.so (DataStore) - dùng để lưu trữ dữ liệu cấu hình</li>
+<li><strong>Third-party:</strong> Quyền sử dụng Firebase, Play Services, Billing Client - cần review policies</li>
+</ul>
+
+<div class="finding info">
+<strong>💡 Gợi ý phân tích tiếp:</strong>
+<ol>
+<li>Dùng <code>dex2jar</code> (JADX/GDA) để giải nén <code>classes.dex</code> → đọc Kotlin/Java source code</li>
+<li>Tìm logic mã hóa nội dung (runtime) trong DEX</li>
+<li>Kiểm tra tài khoản Firebase, xác thực người dùng</li>
+<li>Phân tích cách ứng dụng xử lý 18.7 MB dữ liệu entropy cao</li>
+</ol>
+</div>
+
+<h2>📁 Đường dẫn phân tích</h2>
+<table>
+<tr><th>File/Folder</th><th>Đường dẫn</th><th>Mô tả</th></tr>
+<tr><td>Hoàn thành REA</td><td>/home/ibm/rea/</td><td>Repo REA, build release</td></tr>
+<tr><td>Binary REA</td><td>~/.cargo/bin/rea (v7.1.0)</td><td>REA installed</td></tr>
+<tr><td>File APK</td><td>/run/media/ibm/Data/apk/lichvannien.apks</td><td>22.97 MB APK multi-split</td></tr>
+<tr><td>Các tệp REA</td><td>/home/ibm/rea-analyze/base_apk/re-*.{md,pdf,json,evidence.json}</td><td>Báo cáo REA</td></tr>
+<tr><td>Dự án phân tích</td><td>/home/ibm/rea-analyze/</td><td>Extract + Python analysis scripts</td></tr>
+</table>
+
+<div class="footer">
+<p>Generated by REA v7.1.0 + Python analysis | Date: 2026-11-17 | Model: Solar Mini4 | Language: Vietnamese</p>
+<p><strong>Lịch Chuyên (toLich)</strong> — Ứng dụng giáo dục văn hóa Việt Nam (Lễ Tết) | © 2026 amlichchuan.com</p>
+</div>
+
+</div>
+</body>
+</html>

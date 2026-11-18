@@ -1,0 +1,26 @@
+{
+  "format": 1,
+  "id": "ong-cong-ong-tao",
+  "name": "Ông Công Ông Táo",
+  "aka": [
+    "Tết ông Táo",
+    "Đưa ông Táo về trời",
+    "23 tháng Chạp"
+  ],
+  "slugAliases": [
+    "ong-tao",
+    "tet-ong-tao"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "ong-cong-ong-tao"
+  },
+  "major": true,
+  "calendar": "lunar",
+  "vanKhan": [
+    "ong-cong-ong-tao"
+  ],
+  "summary": "Ông Công Ông Táo là ngày 23 tháng Chạp âm lịch, lễ tiễn Táo quân về trời, thường cúng trước giờ Ngọ và thả cá chép.",
+  "body": "Ngày 23 tháng Chạp âm lịch, các gia đình làm lễ tiễn ông Công ông Táo về chầu trời, thường xong trước 12 giờ trưa. Lễ vật thường có mũ ông Công, áo, hia, cá chép (miền Bắc) và mâm cỗ hoặc mâm ngũ quả. Ngày này mở đầu những ngày chuẩn bị Tết.",
+  "updated": "2026-10-25"
+}

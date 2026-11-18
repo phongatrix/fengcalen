@@ -1,0 +1,183 @@
+{
+  "coverage": {
+    "functions": 0,
+    "instructions": 0,
+    "opaque_bytes": 22937071,
+    "strings": 50000,
+    "truncated": false
+  },
+  "items": [
+    {
+      "address": 425321,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_8a0faad21e3108f1",
+      "kind": "indicator",
+      "subject": "\\\\(3I"
+    },
+    {
+      "address": 959751,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_f6fde75d5d7f8694",
+      "kind": "indicator",
+      "subject": "m,D:\\B_"
+    },
+    {
+      "address": 1281240,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_06afab7ffd6eddf5",
+      "kind": "indicator",
+      "subject": "%\\5uD~"
+    },
+    {
+      "address": 1776673,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_b0804dc754b5e88d",
+      "kind": "indicator",
+      "subject": "E:\\si"
+    },
+    {
+      "address": 2449339,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_796c75f5ea819eaf",
+      "kind": "indicator",
+      "subject": "b:\\~2"
+    },
+    {
+      "address": 2785301,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_25a6e2244087f7a0",
+      "kind": "indicator",
+      "subject": "fZEE:\\Of"
+    },
+    {
+      "address": 3078438,
+      "confidence": "high",
+      "detail": "Email address",
+      "id": "ev_0ee43c6f5ffc06b2",
+      "kind": "indicator",
+      "subject": "B@l.IGN"
+    },
+    {
+      "address": 3602255,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_ce8abd47551885ce",
+      "kind": "indicator",
+      "subject": "e:\\X&"
+    },
+    {
+      "address": 3686113,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_d57808f02f78faf6",
+      "kind": "indicator",
+      "subject": "\\\\Sb;Ji9"
+    },
+    {
+      "address": 3873392,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_84d59adceeef47f9",
+      "kind": "indicator",
+      "subject": "V:\\k'"
+    },
+    {
+      "address": 5665211,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_6e72973a2473d226",
+      "kind": "indicator",
+      "subject": "r:\\#N"
+    },
+    {
+      "address": 5964979,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_68d38a900af7722c",
+      "kind": "indicator",
+      "subject": "%\\{ts"
+    },
+    {
+      "address": 8048989,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_90f0cf8a6865250e",
+      "kind": "indicator",
+      "subject": "\\\\gq*"
+    },
+    {
+      "address": 8835100,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_16bbba9bc75e3b9e",
+      "kind": "indicator",
+      "subject": "%\\;Su(_V"
+    },
+    {
+      "address": 9846834,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_592833b55b5bc273",
+      "kind": "indicator",
+      "subject": ":K:\\}"
+    },
+    {
+      "address": 10128142,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_ddac7f986d7fbd3b",
+      "kind": "indicator",
+      "subject": "\\\\p+,"
+    },
+    {
+      "address": 10906932,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_203d9c7c24216644",
+      "kind": "indicator",
+      "subject": "\\\\Ig*NQ"
+    },
+    {
+      "address": 10958105,
+      "confidence": "high",
+      "detail": "Windows path",
+      "id": "ev_b01887ae7da0e9ec",
+      "kind": "indicator",
+      "subject": ",r:\\}\\\\"
+    },
+    {
+      "address": null,
+      "confidence": "medium",
+      "detail": "executable/pe",
+      "id": "ev_a71dbace42b54823",
+      "kind": "rule",
+      "subject": "MZ header"
+    },
+    {
+      "address": null,
+      "confidence": "medium",
+      "detail": "data-manipulation/encryption/rc4",
+      "id": "ev_572415ebfec796b5",
+      "kind": "rule",
+      "subject": "RC4 key scheduling"
+    }
+  ],
+  "schema_version": 1,
+  "target": {
+    "format": "ZIP container",
+    "name": "lichvannien.apks",
+    "sha256": "4bee16fb569f65a465b0a408e57995e731e6dde1efbea105b5833e704a1d8b8e",
+    "size": 22973935
+  },
+  "tool_version": "7.1.0",
+  "unknowns": [
+    "22937071 bytes are high-entropy (encrypted or compressed) and were not decrypted.",
+    "No executable header was parsed; imports and mitigations are unavailable."
+  ]
+}

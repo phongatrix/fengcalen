@@ -1,0 +1,21 @@
+{
+  "format": 1,
+  "id": "thanh-lap-dang",
+  "name": "Ngày thành lập Đảng Cộng sản Việt Nam",
+  "aka": [
+    "3 tháng 2"
+  ],
+  "slugAliases": [
+    "3-thang-2"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "thanh-lap-dang"
+  },
+  "major": false,
+  "calendar": "solar",
+  "vanKhan": [],
+  "summary": "Ngày thành lập Đảng Cộng sản Việt Nam là 3/2 (1930); không phải ngày nghỉ lễ.",
+  "body": "Ngày 3 tháng 2 kỷ niệm ngày thành lập Đảng Cộng sản Việt Nam năm 1930. Đây là ngày kỷ niệm, không phải ngày nghỉ theo luật.",
+  "updated": "2026-11-03"
+}

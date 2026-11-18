@@ -1,0 +1,22 @@
+{
+  "format": 1,
+  "id": "le-tinh-nhan",
+  "name": "Lễ Tình nhân",
+  "aka": [
+    "14 tháng 2",
+    "Valentine"
+  ],
+  "slugAliases": [
+    "14-thang-2"
+  ],
+  "rule": {
+    "kind": "holiday",
+    "holidayId": "le-tinh-nhan"
+  },
+  "major": false,
+  "calendar": "solar",
+  "vanKhan": [],
+  "summary": "Lễ Tình nhân (Valentine) là 14/2, dịp các đôi tặng hoa, quà cho nhau; không phải ngày nghỉ lễ.",
+  "body": "Ngày 14 tháng 2 là Lễ Tình nhân (Valentine), ngày lễ du nhập từ phương Tây. Đây không phải ngày nghỉ theo luật.",
+  "updated": "2026-11-03"
+}

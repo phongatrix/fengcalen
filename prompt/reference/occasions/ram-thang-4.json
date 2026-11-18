@@ -1,0 +1,22 @@
+{
+  "format": 1,
+  "id": "ram-thang-4",
+  "name": "Rằm tháng Tư",
+  "aka": [
+    "Rằm tháng 4 âm",
+    "Lễ Phật đản"
+  ],
+  "rule": {
+    "kind": "lunarMonthly",
+    "month": 4,
+    "day": 15
+  },
+  "major": false,
+  "calendar": "lunar",
+  "vanKhan": [
+    "ram-mung-1-hang-thang"
+  ],
+  "summary": "Rằm tháng Tư là ngày 15 tháng 4 âm lịch, ngày trăng tròn, dịp các gia đình thắp hương cúng gia tiên và thần linh.",
+  "body": "Rằm tháng Tư là ngày 15 tháng 4 âm lịch (ngày vọng, trăng tròn). Như ngày mùng 1, các gia đình dâng hương, hoa, quả, có nhà làm mâm cơm cúng gia tiên và thần linh trong nhà. Rằm tháng Tư là ngày lễ Phật đản theo Giáo hội Phật giáo Việt Nam.",
+  "updated": "2026-10-25"
+}

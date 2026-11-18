@@ -1,0 +1,39 @@
+{
+  "coverage": {
+    "functions": 0,
+    "instructions": 0,
+    "opaque_bytes": 4096,
+    "strings": 172,
+    "truncated": false
+  },
+  "items": [
+    {
+      "address": 24547,
+      "confidence": "high",
+      "detail": "URL",
+      "id": "ev_ba28373ec9b3c5e4",
+      "kind": "indicator",
+      "subject": "https://android.googlesource.com/toolchain/llvm-project"
+    },
+    {
+      "address": null,
+      "confidence": "medium",
+      "detail": "executable/elf",
+      "id": "ev_26ff206d88165600",
+      "kind": "rule",
+      "subject": "ELF executable"
+    }
+  ],
+  "schema_version": 1,
+  "target": {
+    "format": "ZIP container",
+    "name": "split_config.arm64_v8a.apk",
+    "sha256": "d35e429e1ab1a4e295bbbf8627dae38e80e99ec791d9857913f8864b8d4ce10b",
+    "size": 53576
+  },
+  "tool_version": "7.1.0",
+  "unknowns": [
+    "4096 bytes are high-entropy (encrypted or compressed) and were not decrypted.",
+    "No executable header was parsed; imports and mitigations are unavailable."
+  ]
+}

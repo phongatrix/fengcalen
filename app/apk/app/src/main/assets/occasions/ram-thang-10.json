@@ -1,0 +1,23 @@
+{
+  "format": 1,
+  "id": "ram-thang-10",
+  "name": "Rằm tháng Mười",
+  "aka": [
+    "Rằm tháng 10 âm",
+    "Tết Hạ nguyên",
+    "Tết cơm mới"
+  ],
+  "rule": {
+    "kind": "lunarMonthly",
+    "month": 10,
+    "day": 15
+  },
+  "major": false,
+  "calendar": "lunar",
+  "vanKhan": [
+    "ram-mung-1-hang-thang"
+  ],
+  "summary": "Rằm tháng Mười là ngày 15 tháng 10 âm lịch, ngày trăng tròn, dịp các gia đình thắp hương cúng gia tiên và thần linh.",
+  "body": "Rằm tháng Mười là ngày 15 tháng 10 âm lịch (ngày vọng, trăng tròn). Như ngày mùng 1, các gia đình dâng hương, hoa, quả, có nhà làm mâm cơm cúng gia tiên và thần linh trong nhà. Rằm tháng Mười còn gọi là Tết Hạ nguyên hay Tết cơm mới, khi nhiều nơi dâng cúng gạo mới sau vụ mùa.",
+  "updated": "2026-10-25"
+}

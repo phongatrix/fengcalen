@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lịch Âm - Feng Calen</string>
+    <string name="app_subtitle">Lịch Âm, Phong Thủy &amp; Văn Hóa Truyền Thống</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Hôm nay</string>
+    <string name="nav_calendar">Lịch Tháng</string>
+    <string name="nav_moon">Trăng sao</string>
+    <string name="nav_feng">Phong thủy</string>
+    <string name="nav_cadao">Văn chương</string>
+    <string name="nav_occasions">Sự kiện</string>
+    <string name="nav_settings">Cài đặt</string>
+    <string name="nav_language">Ngôn ngữ</string>
+
+    <!-- Titles & Labels -->
+    <string name="title_today">Hôm nay</string>
+    <string name="title_solar">Dương lịch</string>
+    <string name="title_lunar">Âm lịch</string>
+    <string name="title_can_chi">Can Chi</string>
+    <string name="title_zodiac">Con giáp</string>
+    <string name="title_element">Ngũ hành</string>
+    <string name="title_auspicious_hours">Giờ hoàng đạo</string>
+    <string name="title_good_deeds">Việc nên làm</string>
+    <string name="title_taboos">Việc kiêng kỵ</string>
+    <string name="title_departure_direction">Hướng xuất hành</string>
+    <string name="title_moon_phase">Giai đoạn mặt trăng</string>
+    <string name="title_illumination">Độ sáng mặt trăng</string>
+    <string name="title_constellation">Chòm sao chiếu</string>
+    <string name="title_cosmic_energy">Năng lượng vũ trụ</string>
+    <string name="title_ca_dao">Ca dao</string>
+    <string name="title_cau_doi">Câu đối</string>
+    <string name="title_greetings">Lời chào chúc</string>
+    <string name="title_van_khan">Văn khấn cổ truyền</string>
+    <string name="title_dialects">Từ điển ba miền</string>
+
+    <!-- Buttons & Actions -->
+    <string name="action_search">Tìm kiếm…</string>
+    <string name="action_copy">Sao chép</string>
+    <string name="action_share">Chia sẻ</string>
+    <string name="action_refresh">Làm mới</string>
+    <string name="action_close">Đóng</string>
+    <string name="action_back">Quay lại</string>
+    <string name="action_read_van_khan">Đọc bài văn khấn</string>
+
+    <!-- Settings -->
+    <string name="settings_notifications">Thông báo ngày rằm &amp; mùng 1</string>
+    <string name="settings_notifications_desc">Nhắc nhở trước ngày lễ, tết, sóc, vọng</string>
+    <string name="settings_theme">Giao diện hiển thị</string>
+    <string name="settings_theme_system">Theo hệ thống</string>
+    <string name="settings_theme_light">Chế độ sáng</string>
+    <string name="settings_theme_dark">Chế độ tối</string>
+    <string name="settings_language">Ngôn ngữ hiển thị</string>
+    <string name="settings_lang_vi">Tiếng Việt</string>
+    <string name="settings_lang_en">English</string>
+    <string name="settings_about">Giới thiệu ứng dụng</string>
+    <string name="settings_version">Phiên bản 1.0.0 (FengCalen)</string>
+</resources>
