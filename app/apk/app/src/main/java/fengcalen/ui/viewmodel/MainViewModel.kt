@@ -20,6 +20,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.time.LocalDate
@@ -63,9 +64,9 @@ class MainViewModel @Inject constructor(
         reminders.filter { LunarCalendar.isDateMatchingReminder(date, it) }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
-    // Danh sách sự kiện sắp tới trong vòng 30 ngày (đặc biệt là 10 ngày, 1 tuần)
+    // Danh sách sự kiện sắp tới trong vòng 30 ngày (tối ưu CPU: chỉ tính lại khi danh sách nhắc nhở thay đổi)
     val upcomingReminders: StateFlow<List<Pair<EventReminderEntity, Long>>> = allReminders
-        .combine(_selectedDate) { reminders, _ ->
+        .map { reminders ->
             val today = LocalDate.now()
             reminders
                 .filter { it.isEnabled }

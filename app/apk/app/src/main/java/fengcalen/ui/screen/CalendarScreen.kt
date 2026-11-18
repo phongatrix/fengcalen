@@ -43,6 +43,8 @@ fun CalendarScreen(navController: NavController, viewModel: MainViewModel) {
     var showCreateDialog by remember { mutableStateOf(false) }
     var reminderToEdit by remember { mutableStateOf<EventReminderEntity?>(null) }
 
+    val today = remember { LocalDate.now() }
+
     val daysInMonth = remember(currentYearMonth) {
         val firstDay = currentYearMonth.atDay(1)
         val dayOfWeekOffset = (firstDay.dayOfWeek.value + 6) % 7 // Monday = 0
@@ -55,6 +57,24 @@ fun CalendarScreen(navController: NavController, viewModel: MainViewModel) {
             list.add(currentYearMonth.atDay(day))
         }
         list
+    }
+
+    // Tối ưu CPU: Tiền tính toán dữ liệu âm lịch cả tháng một lần duy nhất
+    val monthLunarMap = remember(currentYearMonth) {
+        daysInMonth.filterNotNull().associateWith { date ->
+            LunarCalendar.convertSolar2Lunar(date.dayOfMonth, date.monthValue, date.year)
+        }
+    }
+
+    // Tối ưu CPU: Tập hợp các ngày có sự kiện trong tháng bằng Set O(1)
+    val datesWithEvents = remember(allReminders, currentYearMonth) {
+        val set = mutableSetOf<LocalDate>()
+        daysInMonth.filterNotNull().forEach { date ->
+            if (allReminders.any { reminder -> LunarCalendar.isDateMatchingReminder(date, reminder) }) {
+                set.add(date)
+            }
+        }
+        set
     }
 
     // Selected lunar date calculation
@@ -156,7 +176,11 @@ fun CalendarScreen(navController: NavController, viewModel: MainViewModel) {
                         .padding(8.dp),
                     userScrollEnabled = false
                 ) {
-                    items(daysInMonth) { date ->
+                    items(
+                        count = daysInMonth.size,
+                        key = { index -> daysInMonth[index]?.toEpochDay() ?: index.toLong() }
+                    ) { index ->
+                        val date = daysInMonth[index]
                         if (date == null) {
                             Box(
                                 modifier = Modifier
@@ -166,19 +190,12 @@ fun CalendarScreen(navController: NavController, viewModel: MainViewModel) {
                             )
                         } else {
                             val isSelected = date == selectedDate
-                            val isToday = date == LocalDate.now()
-                            val lunarData = remember(date) {
-                                LunarCalendar.convertSolar2Lunar(date.dayOfMonth, date.monthValue, date.year)
-                            }
+                            val isToday = date == today
+                            val lunarData = monthLunarMap[date] ?: intArrayOf(1, 1, 2026, 0)
                             val lunarDay = lunarData[0]
                             val lunarMonth = lunarData[1]
                             val isSpecialLunar = lunarDay == 1 || lunarDay == 15
-
-                            // Check if this date has any user-created event reminders
-                            val dayEvents = remember(allReminders, date) {
-                                allReminders.filter { LunarCalendar.isDateMatchingReminder(date, it) }
-                            }
-                            val hasEvent = dayEvents.isNotEmpty()
+                            val hasEvent = date in datesWithEvents
 
                             Box(
                                 modifier = Modifier

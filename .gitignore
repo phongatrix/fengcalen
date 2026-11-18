@@ -2,6 +2,7 @@
 **/build/
 *.apk
 *.aab
+*.apks
 
 # Except release APKs
 !app/apk/release/*.apk
